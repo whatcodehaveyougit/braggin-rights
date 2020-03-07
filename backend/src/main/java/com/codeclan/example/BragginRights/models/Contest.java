@@ -23,7 +23,7 @@ public class Contest {
     private List<Predictable> predictables;
 
 
-    public Contest(Long id, String title) {
+    public Contest(String title) {
         this.id = id;
         this.title = title;
         this.predictables = new ArrayList<Predictable>();

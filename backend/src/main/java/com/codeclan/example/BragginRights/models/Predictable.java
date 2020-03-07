@@ -1,6 +1,10 @@
 package com.codeclan.example.BragginRights.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="predictables")
@@ -16,16 +20,23 @@ public class Predictable {
     @Column(name="result")
     private String result;
 
+    @OneToMany(mappedBy = "predictable")
+    private List<Prediction> predictions;
+
     @ManyToOne
     @JoinColumn(name="contest_id", nullable = false)
     private Contest contest;
 
-    public Predictable(Long id, String title, String result, Contest contest) {
+    public Predictable(String title, Contest contest) {
         this.id = id;
         this.title = title;
-        this.result = result;
         this.contest = contest;
+        this.result = "";
+        this.predictions = new ArrayList<Prediction>();
+
     }
+
+
 
     public Predictable(){
     }
@@ -52,6 +63,14 @@ public class Predictable {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public List<Prediction> getPredictions() {
+        return predictions;
+    }
+
+    public void setPredictions(List<Prediction> predictions) {
+        this.predictions = predictions;
     }
 
     public Contest getContest() {

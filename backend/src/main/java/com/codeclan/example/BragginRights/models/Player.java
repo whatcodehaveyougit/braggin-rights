@@ -19,10 +19,10 @@ public class Player {
     @JoinColumn(name="prediction_id", nullable=false)
     private List<Prediction> predictions;
 
-    public Player(Long id, String name, ArrayList<Prediction> predictions) {
+    public Player(String name) {
         this.id = id;
         this.name = name;
-        this.predictions = predictions;
+        this.predictions = new ArrayList<Prediction>();
     }
 
     public Player(){
@@ -50,6 +50,10 @@ public class Player {
 
     public void setPredictions(ArrayList<Prediction> predictions) {
         this.predictions = predictions;
+    }
+
+    public void addPrediction(Prediction prediction) {
+        this.predictions.add(prediction);
     }
 }
 

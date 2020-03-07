@@ -10,22 +10,24 @@ public class Prediction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="prediction")
+    private String predictionTitle;
+
     @ManyToOne
     @JoinColumn(name="player_id", nullable = false)
     private Player player;
 
-    @OneToOne
-    @JoinColumn(name="predictable_id")
+    @ManyToOne
+    @JoinColumn(name="predictable_id", nullable=false)
     private Predictable predictable;
 
-    @Column(name="prediction")
-    private String prediction;
 
-    public Prediction(Long id, Player player, Predictable predictable, String prediction) {
+    public Prediction(String predictionTitle, Player player, Predictable predictable) {
         this.id = id;
+        this.predictionTitle = predictionTitle;
         this.player = player;
         this.predictable = predictable;
-        this.prediction = prediction;
+
     }
 
     public Prediction(){
@@ -55,12 +57,12 @@ public class Prediction {
         this.predictable = predictable;
     }
 
-    public String getPrediction() {
-        return prediction;
+    public String getPredictionTitle() {
+        return predictionTitle;
     }
 
-    public void setPrediction(String prediction) {
-        this.prediction = prediction;
+    public void setPredictionTitle(String predictionTitle) {
+        this.predictionTitle = predictionTitle;
     }
 }
 
