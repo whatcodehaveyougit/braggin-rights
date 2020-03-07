@@ -2,6 +2,7 @@ package com.codeclan.example.BragginRights.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="players")
@@ -16,7 +17,7 @@ public class Player {
 
     @OneToMany
     @JoinColumn(name="prediction_id", nullable=false)
-    private ArrayList<Prediction> predictions;
+    private List<Prediction> predictions;
 
     public Player(Long id, String name, ArrayList<Prediction> predictions) {
         this.id = id;
@@ -43,7 +44,7 @@ public class Player {
         this.name = name;
     }
 
-    public ArrayList<Prediction> getPredictions() {
+    public List<Prediction> getPredictions() {
         return predictions;
     }
 

@@ -18,13 +18,13 @@ public class Predictable {
 
     @ManyToOne
     @JoinColumn(name="contest_id", nullable = false)
-    private Contest Contest;
+    private Contest contest;
 
     public Predictable(Long id, String title, String result, Contest contest) {
         this.id = id;
         this.title = title;
         this.result = result;
-        Contest = contest;
+        this.contest = contest;
     }
 
     public Predictable(){
@@ -55,11 +55,11 @@ public class Predictable {
     }
 
     public Contest getContest() {
-        return Contest;
+        return contest;
     }
 
     public void setContest(Contest contest) {
-        Contest = contest;
+        this.contest = contest;
     }
 }
 

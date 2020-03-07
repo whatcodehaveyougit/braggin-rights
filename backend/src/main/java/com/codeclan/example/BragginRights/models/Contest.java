@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "contests")
@@ -19,7 +20,7 @@ public class Contest {
 
     @JsonIgnore
     @OneToMany(mappedBy = "contest")
-    private ArrayList<Predictable> predictables;
+    private List<Predictable> predictables;
 
 
     public Contest(Long id, String title) {
@@ -47,7 +48,7 @@ public class Contest {
         this.title = title;
     }
 
-    public ArrayList<Predictable> getPredictables() {
+    public List<Predictable> getPredictables() {
         return predictables;
     }
 
