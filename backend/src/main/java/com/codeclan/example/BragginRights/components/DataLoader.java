@@ -50,10 +50,10 @@ public class DataLoader implements ApplicationRunner {
         predictionRepo.save(prediction1);
 
         Prediction prediction2 = new Prediction("Split", player1, predictable2);
-//        predictionRepo.save(prediction2);
-        player1.addPrediction(prediction1);
-        player1.addPrediction(prediction2);
-        playerRepo.save(player1);
+        predictionRepo.save(prediction2);
+//        player1.addPrediction(prediction1);
+//        player1.addPrediction(prediction2);
+//        playerRepo.save(player1);
 
 
 //        Player player2 = new Player("Catherine");

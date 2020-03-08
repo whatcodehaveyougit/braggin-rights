@@ -1,5 +1,7 @@
 package com.codeclan.example.BragginRights.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +17,8 @@ public class Player {
     @Column(name="name")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name="prediction_id", nullable=false)
+    @JsonIgnore
+    @OneToMany(mappedBy="player")
     private List<Prediction> predictions;
 
     public Player(String name) {
