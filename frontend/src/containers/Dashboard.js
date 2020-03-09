@@ -8,7 +8,16 @@ class Dashboard extends Component {
     this.state = {
       contests: []
     };
-    this.addContest = this.addContest.bind(this);
+    this.handleContestSubmit = this.handleContestSubmit.bind(this);
+
+  }
+
+  handleContestSubmit(submittedContest) {
+    submittedContest.id = Date.now();
+    const updatedContests = [...this.state.contests, submittedContest];
+    this.setState({
+      contests: updatedContests
+    });
   }
 
   componentDidMount() {
@@ -20,14 +29,6 @@ class Dashboard extends Component {
       .catch(err => console.error);
   }
 
-  addContest(event) {
-    event.preventDefault();
-
-    this.state.contests.add(event.target.value);
-    // this.props.onCommentSubmit({
-    //   this.state.contest.push();
-    // })
-  }
 
 
   render() {
@@ -37,11 +38,12 @@ class Dashboard extends Component {
           Dashboard
         </h1>
         <ContestList contests={this.state.contests} />
-        <ContestForm addContest={this.addContest} />
+        <ContestForm onContestSubmit={this.handleContestSubmit} />
 
       </>
 
     )
-  };
+  }
 }
+;
 export default Dashboard;

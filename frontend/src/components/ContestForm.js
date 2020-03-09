@@ -8,15 +8,16 @@ class ContestForm extends Component {
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const title = this.state.title.trim();
-    if (!title) {
-      return
-    }
-    this.props.onFormSubmit({
+    const title = this.state.title;
+    // if (!title) {
+    //   return
+    // }
+    this.props.onContestSubmit({
       title: title
     })
   }
@@ -34,20 +35,5 @@ class ContestForm extends Component {
   }
 }
 
-// function addContest(props) {
-//   function handleClick() {
-//     console.log("Hello from Contest Form")
-//     props.addContest();
-//   }
-
-//   return (
-//     <form onClick={handleClick}>
-//       <input type="text" value="">
-//         Test
-//       </input>
-//       <input type="submit" value="submit" >
-//     </form>
-//       )
-//     }
 
 export default ContestForm
