@@ -9,7 +9,7 @@ const NavBar = () => (
         <Link to="/">Dashboard</Link>
       </li>
       <li>
-      Add New Contest
+      <Link to="/add-contest">Add New Contest</Link>
       </li>
     </ul>
   </section>

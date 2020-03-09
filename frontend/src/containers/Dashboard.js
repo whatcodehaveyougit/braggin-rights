@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
     fetch(url)
     .then(res => res.json())
-    .then(contests => this.setState({ contests: contests }))
+    .then(contests => this.setState({ contests: contests._embedded.contests }))
     .catch(err => console.error);
   }
 
@@ -36,7 +36,7 @@ class Dashboard extends Component {
       })
     })
 
-    submittedContest.id = Date.now();
+    // submittedContest.id = Date.now();
 
     const updatedContests = [...this.state.contests, submittedContest];
     this.setState({
@@ -54,13 +54,17 @@ class Dashboard extends Component {
             component={Contest}
             />
             <Route
+            path="/add-contest"
+            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} />}
+            />
+            <Route
             exact
             path="/"
             render={() => <ContestList contests={this.state.contests} />}
             />
         </React.Fragment>
       </Router>
-      <ContestForm onContestSubmit={this.handleContestSubmit} />
+
     )
   };
 }

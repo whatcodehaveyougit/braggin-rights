@@ -24,7 +24,6 @@ public class Contest {
 
 
     public Contest(String title) {
-        this.id = id;
         this.title = title;
         this.guessables = new ArrayList<Guessable>();
     }

@@ -1,13 +1,16 @@
 package com.codeclan.example.BragginRights.config;
 
+import com.codeclan.example.BragginRights.models.Contest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
     @Configuration
-    public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfigurer {
+    public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfigurer extends
+            RepositoryRestMvcConfiguration {
         private static final String CORS_BASE_PATTERN = "/**";
         private static final String ALLOWED_ORIGINS = "*";
         private static final String ALLOWED_HEADERS = "*";
@@ -28,4 +31,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
                     .allowedMethods(ALLOWED_METHODS);
         }
     }
-
+    
+@Configuration
+public static class RepositoryConfig extends
+        RepositoryRestMvcConfiguration {
+    @Override
+    protected void configureRepositoryRestConfiguration(
+            RepositoryRestConfiguration config) {
+        config.exposeIdsFor(Class1.class, Class2.class);
+    }
+}

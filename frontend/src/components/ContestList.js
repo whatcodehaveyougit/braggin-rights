@@ -22,6 +22,7 @@ class ContestList extends Component {
 
   getContestById(){
     const selectedContest = this.props.contests.find(contest => {
+      console.log(contest)
       return contest.id === this.state.selectedContest
     })
     return selectedContest

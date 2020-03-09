@@ -8,9 +8,6 @@ function Contest({selectedContest}) {
       <h3>
       {selectedContest.title}
       </h3>
-      <h3>
-      {selectedContest.guessables}
-      </h3>
       </>
   )}
   return null
