@@ -16,8 +16,5 @@ public class ContestController {
     @Autowired
     ContestRepo contestRepo;
 
-    @GetMapping
-    public List<Contest> getAllContests(){
-        return contestRepo.findAll();
-    }
+
 }
