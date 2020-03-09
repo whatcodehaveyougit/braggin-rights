@@ -9,6 +9,16 @@ class Dashboard extends Component {
         }
     }
 
+    componentDidMount(){
+        const url = 'http://localhost:8080/contests'
+
+        fetch(url)
+        .then(res => res.json())
+        .then(contests => this.setState({ contests: contests }))
+        .catch(err => console.error);
+    }
+
+
 
     render() {
         return(
