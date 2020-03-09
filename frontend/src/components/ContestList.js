@@ -30,7 +30,7 @@ class ContestList extends Component {
   render(){
     return(
       <>
-      <h2>ContestList</h2>
+      <h2>Your Contests</h2>
       <ContestSelector contests={this.props.contests} onContestSelected={this.handleContestSelected} />
       <Contest selectedContest={this.getContestById()} />
       </>

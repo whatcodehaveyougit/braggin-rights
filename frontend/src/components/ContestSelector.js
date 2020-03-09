@@ -1,4 +1,5 @@
 import React from 'react';
+import './ContestSelector.css';
 
 const ContestSelector = ({contests, onContestSelected}) => {
 
@@ -11,7 +12,7 @@ const ContestSelector = ({contests, onContestSelected}) => {
     }
 
     return (
-      <select defaultValue="default" onChange={handleChange}>
+      <select id="contest-selection" defaultValue="default" onChange={handleChange}>
         <option disabled value="default">Choose a contest...</option>
         {contestsList}
       </select>

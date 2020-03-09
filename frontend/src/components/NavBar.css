@@ -1,0 +1,15 @@
+ul{
+  list-style-type: none;
+  color: blue;
+  text-align: center;
+}
+
+li{
+    display: inline;
+    padding: 20px;
+}
+
+#navbar{
+  background-color: lightgrey;
+  padding: 50px;
+}
