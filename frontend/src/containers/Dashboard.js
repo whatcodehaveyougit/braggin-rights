@@ -27,12 +27,13 @@ class Dashboard extends Component {
         <React.Fragment>
         <NavBar/>
             <Route
-            path="/contests"
-            render={() => <ContestList contests={this.state.contests} />}
-            />
-            <Route
             path={`/contests/:id`}
             component={Contest}
+            />
+            <Route
+            exact
+            path="/"
+            render={() => <ContestList contests={this.state.contests} />}
             />
         </React.Fragment>
       </Router>

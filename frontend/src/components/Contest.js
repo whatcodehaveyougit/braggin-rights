@@ -1,10 +1,13 @@
 import React from 'react'
 
-function Contest ({contest}) {
-
-  return(
-    <h1>{contest}</h1>
-  )
+function Contest({selectedContest}) {
+    if(selectedContest != null)
+    {return (
+        <h3>
+        {selectedContest.title}
+          </h3>
+      )}
+      return null
 }
 
 export default Contest;

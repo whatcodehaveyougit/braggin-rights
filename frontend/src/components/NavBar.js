@@ -5,7 +5,7 @@ const NavBar = () => (
 
   <ul>
     <li>
-      <Link to="/contests">Contests</Link>
+      <Link to="/">Contests</Link>
     </li>
   </ul>
 )

@@ -1,22 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Contest from './Contest'
+import ContestSelector from './ContestSelector'
 
-function ContestList ({contests}) {
 
-  const listContests = contests.map(contest => {
-      // return <Link to={`/contests/${contest.id}`}><Contest contestTitle={contest.title}>{contest.title}</Contest></Link>
-      return <li>{contest.title}</li>
+class ContestList extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      selectedContest: ""
+    }
+    this.handleContestSelected = this.handleContestSelected.bind(this)
+    this.getContestById = this.getContestById.bind(this)
+  }
+
+
+  handleContestSelected(id){
+    this.setState({selectedContest: id})
+  }
+
+  getContestById(){
+    const selectedContest = this.props.contests.find(contest => {
+      return contest.id == this.state.selectedContest
     })
+    return selectedContest
+  }
 
-  return (
-    <>
+  render(){
+    return(
+      <>
       <h2>ContestList</h2>
-      <ul>
-        {listContests}
-      </ul>
-    </>
-  )
+      <ContestSelector contests={this.props.contests} onContestSelected={this.handleContestSelected} />
+      <Contest selectedContest={this.getContestById()} />
+      </>
+    )
+  }
+
 }
 
 export default ContestList;
