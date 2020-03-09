@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import ContestList from '../components/ContestList.js'
+import Contest from '../components/Contest.js'
+import NavBar from '../components/NavBar'
+import {BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      contests:  [ ]
+      contests:  []
     }
   }
 
@@ -18,17 +21,21 @@ class Dashboard extends Component {
     .catch(err => console.error);
   }
 
-
-
   render() {
     return(
-      <>
-      <h1>
-      Dashboard
-      </h1>
-      <ContestList contests= {this.state.contests} />
-      </>
-
+      <Router>
+        <React.Fragment>
+        <NavBar/>
+            <Route
+            path="/contests"
+            render={() => <ContestList contests={this.state.contests} />}
+            />
+            <Route
+            path={`/contests/:id`}
+            component={Contest}
+            />
+        </React.Fragment>
+      </Router>
     )
   };
 }
