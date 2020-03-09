@@ -4,7 +4,7 @@ import './ContestSelector.css';
 const ContestSelector = ({contests, onContestSelected}) => {
 
   const contestsList = contests.map( contest => {
-      return <option value={contest.id} key={contest.id}>{contest.title}</option>
+      return <li value={contest.id} key={contest.id} onClick={handleChange}>{contest.title}</li>
     })
 
     function handleChange(event){
@@ -12,10 +12,9 @@ const ContestSelector = ({contests, onContestSelected}) => {
     }
 
     return (
-      <select id="contest-selection" defaultValue="default" onChange={handleChange}>
-        <option disabled value="default">Choose a contest...</option>
+      <ul>
         {contestsList}
-      </select>
+      </ul>
     )
 
 }

@@ -15,17 +15,18 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    const url = 'http://localhost:8080/contests'
+      const url = 'http://localhost:8080/contests'
 
-    fetch(url)
-    .then(res => res.json())
-    .then(contests => this.setState({ contests: contests._embedded.contests }))
-    .catch(err => console.error);
+      fetch(url)
+      .then(res => res.json())
+      .then(contests => this.setState({ contests: contests._embedded.contests }))
+      .catch(err => console.error);
   }
 
   handleContestSubmit(submittedContest) {
-    console.log(submittedContest)
-    fetch('http://localhost:8080/contests/', {
+    console.log(submittedContest);
+
+    fetch('http://localhost:8080/contests', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -34,14 +35,18 @@ class Dashboard extends Component {
       body: JSON.stringify({
         title: submittedContest.title
       })
-    })
-
-    // submittedContest.id = Date.now();
-
-    const updatedContests = [...this.state.contests, submittedContest];
-    this.setState({
-      contests: updatedContests
-    });
+    }).then(()=>{
+          const updatedContests = [...this.state.contests, submittedContest];
+          this.setState({
+            contests: updatedContests
+          });
+        }).then(()=>{
+          const url = 'http://localhost:8080/contests'
+          fetch(url)
+          .then(res => res.json())
+          .then(contests => this.setState({ contests: contests._embedded.contests }))
+          .catch(err => console.error);
+        })
   }
 
   render() {
