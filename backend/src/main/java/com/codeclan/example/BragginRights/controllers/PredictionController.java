@@ -17,8 +17,4 @@ public class PredictionController {
     @Autowired
     PredictionRepo predictionRepo;
 
-    @GetMapping
-    public List<Prediction> getAllPredictions(){
-        return predictionRepo.findAll();
-    }
 }

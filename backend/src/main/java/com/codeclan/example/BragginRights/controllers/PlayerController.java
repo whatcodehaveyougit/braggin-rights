@@ -15,8 +15,4 @@ public class PlayerController {
     @Autowired
     PlayerRepo playerRepo;
 
-    @GetMapping
-    public List<Player> getAllPlayers(){
-        return playerRepo.findAll();
-    }
 }

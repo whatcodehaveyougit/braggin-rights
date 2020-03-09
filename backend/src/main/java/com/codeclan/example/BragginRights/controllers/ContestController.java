@@ -1,6 +1,7 @@
 package com.codeclan.example.BragginRights.controllers;
 
 import com.codeclan.example.BragginRights.models.Contest;
+import com.codeclan.example.BragginRights.models.Player;
 import com.codeclan.example.BragginRights.repositories.ContestRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,5 @@ public class ContestController {
 
     @Autowired
     ContestRepo contestRepo;
-
 
 }

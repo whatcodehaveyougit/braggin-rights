@@ -15,9 +15,5 @@ public class GuessableController {
     @Autowired
     GuessableRepo guessableRepo;
 
-    @GetMapping
-    public List<Guessable> getAllGuessables(){
-        return guessableRepo.findAll();
-    }
 
 }
