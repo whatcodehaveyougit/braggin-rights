@@ -18,15 +18,15 @@ public class Prediction {
     private Player player;
 
     @ManyToOne
-    @JoinColumn(name="predictable_id", nullable=false)
-    private Predictable predictable;
+    @JoinColumn(name="guessable_id", nullable=false)
+    private Guessable guessable;
 
 
-    public Prediction(String predictionTitle, Player player, Predictable predictable) {
+    public Prediction(String predictionTitle, Player player, Guessable guessable) {
         this.id = id;
         this.predictionTitle = predictionTitle;
         this.player = player;
-        this.predictable = predictable;
+        this.guessable = guessable;
 
     }
 
@@ -49,12 +49,12 @@ public class Prediction {
         this.player = player;
     }
 
-    public Predictable getPredictable() {
-        return predictable;
+    public Guessable getGuessable() {
+        return guessable;
     }
 
-    public void setPredictable(Predictable predictable) {
-        this.predictable = predictable;
+    public void setGuessable(Guessable guessable) {
+        this.guessable = guessable;
     }
 
     public String getPredictionTitle() {

@@ -20,13 +20,13 @@ public class Contest {
 
     @JsonIgnore
     @OneToMany(mappedBy = "contest")
-    private List<Predictable> predictables;
+    private List<Guessable> guessables;
 
 
     public Contest(String title) {
         this.id = id;
         this.title = title;
-        this.predictables = new ArrayList<Predictable>();
+        this.guessables = new ArrayList<Guessable>();
     }
 
     public Contest(){
@@ -48,12 +48,12 @@ public class Contest {
         this.title = title;
     }
 
-    public List<Predictable> getPredictables() {
-        return predictables;
+    public List<Guessable> getGuessables() {
+        return guessables;
     }
 
-    public void setPredictables(ArrayList<Predictable> predictables) {
-        this.predictables = predictables;
+    public void setGuessables(ArrayList<Guessable> guessables) {
+        this.guessables = guessables;
     }
 
 }

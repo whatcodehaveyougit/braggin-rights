@@ -1,14 +1,12 @@
 package com.codeclan.example.BragginRights.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="predictables")
-public class Predictable {
+@Table(name="guessables")
+public class Guessable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +18,15 @@ public class Predictable {
     @Column(name="result")
     private String result;
 
-    @OneToMany(mappedBy = "predictable")
+    @OneToMany(mappedBy = "guessable")
+    // Changed this from Guessable to predictions
     private List<Prediction> predictions;
 
     @ManyToOne
     @JoinColumn(name="contest_id", nullable = false)
     private Contest contest;
 
-    public Predictable(String title, Contest contest) {
+    public Guessable(String title, Contest contest) {
         this.id = id;
         this.title = title;
         this.contest = contest;
@@ -36,9 +35,7 @@ public class Predictable {
 
     }
 
-
-
-    public Predictable(){
+    public Guessable(){
     }
 
     public Long getId() {
@@ -65,13 +62,13 @@ public class Predictable {
         this.result = result;
     }
 
-    public List<Prediction> getPredictions() {
-        return predictions;
-    }
-
-    public void setPredictions(List<Prediction> predictions) {
-        this.predictions = predictions;
-    }
+//    public List<Guessable> getPredictions() {
+//        return guessables;
+//    }
+//
+//    public void setPredictions(List<Guessable> predictions) {
+//        this.guessables = guessables;
+//    }
 
     public Contest getContest() {
         return contest;
@@ -81,4 +78,3 @@ public class Predictable {
         this.contest = contest;
     }
 }
-
