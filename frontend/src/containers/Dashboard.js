@@ -33,7 +33,8 @@ class Dashboard extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        title: submittedContest.title
+        title: submittedContest.title,
+        // guessables: submittedContest.guessableArray
       })
     }).then(()=>{
           const updatedContests = [...this.state.contests, submittedContest];
