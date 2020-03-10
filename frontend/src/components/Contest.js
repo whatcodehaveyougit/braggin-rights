@@ -8,6 +8,7 @@ function Contest({selectedContest}) {
       <h3>
       {selectedContest.title}
       </h3>
+      <p>{selectedContest._embedded.guessables[0].title}</p>
       </>
   )}
   return null
