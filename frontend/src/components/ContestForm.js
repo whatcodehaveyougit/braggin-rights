@@ -20,6 +20,10 @@ class ContestForm extends Component {
     this.props.onContestSubmit({
       title: title
     })
+    
+    this.setState({
+      title: ""
+    })
   }
   handleTitleChange(event) {
     this.setState({ title: event.target.value })
