@@ -9,9 +9,11 @@ class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      contests:  []
+      contests:  [],
+      createdContest: null
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
+    this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -33,21 +35,43 @@ class Dashboard extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        title: submittedContest.title,
-        // guessables: submittedContest.guessableArray
+        title: submittedContest.title
       })
-    }).then(()=>{
-          const updatedContests = [...this.state.contests, submittedContest];
+    })
+    .then(res => res.json())
+    .then(contest =>{
+          // console.log(contest)
+          const updatedContests = [...this.state.contests, contest];
           this.setState({
+            createdContest: contest,
             contests: updatedContests
           });
-        }).then(()=>{
-          const url = 'http://localhost:8080/contests'
-          fetch(url)
-          .then(res => res.json())
-          .then(contests => this.setState({ contests: contests._embedded.contests }))
-          .catch(err => console.error);
         })
+  }
+
+  handleGuessableSubmit(postUrl, submittedGuessable){
+    console.log(submittedGuessable);
+    console.log(postUrl.url._links.self)
+
+    // fetch('http://localhost:8080/contests', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     title: submittedContest.title
+    //   })
+    // })
+    // .then(res => res.json())
+    // .then(contest =>{
+    //       // console.log(contest)
+    //       const updatedContests = [...this.state.contests, contest];
+    //       this.setState({
+    //         createdContest: contest,
+    //         contests: updatedContests
+    //       });
+    //     })
   }
 
   render() {
@@ -61,7 +85,8 @@ class Dashboard extends Component {
             />
             <Route
             path="/add-contest"
-            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} />}
+            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit} 
+            createdContest={this.state.createdContest} />}
             />
             <Route
             exact
