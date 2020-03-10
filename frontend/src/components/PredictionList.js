@@ -1,14 +1,14 @@
 import React from 'react';
-import './Lists.css';
+import './PredictionList.css';
 
 function PredictionList({selectedGuessable}){
 
   if(selectedGuessable != null){
       return(
         <>
-        <ul class="data-list">
+        <ul className="prediction-list">
         {selectedGuessable._embedded.predictions.map( prediction => {
-          return <li value={prediction.id} key={prediction.id} >{prediction.predictionTitle}</li>
+          return <li value={prediction.id} key={prediction.id} >{prediction.player.name} predicts {prediction.predictionTitle}</li>
         })}
         </ul>
         </>

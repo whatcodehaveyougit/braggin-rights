@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
-import './Lists.css';
+import './ContestList.css';
 
 class ContestList extends Component {
 
@@ -41,16 +41,16 @@ class ContestList extends Component {
     render(){
       return(
         <>
-          <ul class="data-list">
-            {this.props.contests.map ( contest => {
-             return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-              })}
-          </ul>
-          <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable}/>
-          <PredictionList selectedGuessable={this.state.selectedGuessable} />
-      </>
-  )
+        <ul className="contest-list">
+        {this.props.contests.map ( contest => {
+          return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
+        })}
+        </ul>
+        <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable}/>
+        <PredictionList selectedGuessable={this.state.selectedGuessable} />
+        </>
+      )
+    }
   }
-}
 
-export default ContestList;
+  export default ContestList;

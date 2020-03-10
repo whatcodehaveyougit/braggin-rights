@@ -1,5 +1,5 @@
 import React from 'react';
-import './Lists.css';
+import './GuessableList.css'
 
 function GuessableList({selectedContest, onGuessableClick}){
 
@@ -10,11 +10,14 @@ function GuessableList({selectedContest, onGuessableClick}){
   if(selectedContest != null){
       return(
         <>
-        <ul class="data-list">
-        {selectedContest.guessables.map( guessable => {
-          return <li value={guessable.id} key={guessable.id} onClick={handleEvent}>{guessable.title}</li>
-        })}
-        </ul>
+          <div id="selected-contest-title-wrapper">
+            <h3>{selectedContest.title}</h3>
+          </div>
+          <ul className="guessable-list">
+          {selectedContest.guessables.map( guessable => {
+            return <li value={guessable.id} key={guessable.id} onClick={handleEvent}>{guessable.title}</li>
+          })}
+          </ul>
         </>
       )} return null
 }

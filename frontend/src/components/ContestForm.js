@@ -14,13 +14,10 @@ class ContestForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const title = this.state.title;
-    // if (!title) {
-    //   return
-    // }
     this.props.onContestSubmit({
       title: title
     })
-    
+
     this.setState({
       title: ""
     })
