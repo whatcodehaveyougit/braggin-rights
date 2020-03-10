@@ -14,11 +14,10 @@ class ContestList extends Component {
   }
 
   handleContestSelected(id){
-    const intId = parseInt(id)
-    fetch(`http://localhost:8080/contests/${intId}`)
-    .then(res => res.json())
-    .then(contest => this.setState({ selectedContest: contest }))
-    .catch(err => console.error);
+    const selectedContest = this.props.contests.find(contest => {
+      return contest.id == id
+    })
+    this.setState({selectedContest: selectedContest})
   }
 
   render(){
