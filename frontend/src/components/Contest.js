@@ -19,11 +19,23 @@ function Contest({selectedContest}) {
                 </ul>
       })
 
+      // function getGuessableId(event){
+      //   const selectedGuessable = selectedContest.guessables.find(guessable => {
+      //     return guessable.id === event.target.value
+      //   })
+      //   setSelectedGuessable(selectedGuessable)
+      // }
+
       function getGuessableId(event){
         const selectedGuessable = selectedContest.guessables.find(guessable => {
           return guessable.id === event.target.value
         })
-        setSelectedGuessable(selectedGuessable)
+        const correctId = selectedGuessable.id
+        fetch(`http://localhost:8080/guessables/${correctId}`)
+        .then(res => res.json())
+        .then(fetchedGuessable => setSelectedGuessable(fetchedGuessable))
+        .catch(err => console.error);
+
       }
 
 
