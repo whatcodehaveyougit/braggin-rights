@@ -11,20 +11,14 @@ class ContestList extends Component {
       selectedContest: null
     }
     this.handleContestSelected = this.handleContestSelected.bind(this)
-    this.getContestById = this.getContestById.bind(this)
   }
-
 
   handleContestSelected(id){
     const intId = parseInt(id)
-    this.setState({selectedContest: intId})
-  }
-
-  getContestById(){
-    const selectedContest = this.props.contests.find(contest => {
-      return contest.id === this.state.selectedContest
-    })
-    return selectedContest
+    fetch(`http://localhost:8080/contests/${intId}`)
+    .then(res => res.json())
+    .then(contest => this.setState({ selectedContest: contest }))
+    .catch(err => console.error);
   }
 
   render(){
@@ -32,7 +26,7 @@ class ContestList extends Component {
       <>
       <h2>Your Contests</h2>
       <ContestSelector contests={this.props.contests} onContestSelected={this.handleContestSelected} />
-      <Contest selectedContest={this.getContestById()} />
+      <Contest selectedContest={this.state.selectedContest} />
       </>
     )
   }
