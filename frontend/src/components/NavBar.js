@@ -4,15 +4,15 @@ import './NavBar.css';
 
 const NavBar = () => (
   <section id="navbar">
-    <h1 className="app-title">Braggin' Rights</h1>
-    <ul class>
+    <h1 className="title-text"><a href="http://localhost:3000/">Braggin' Rights</a></h1>
+    {/* <ul class>
       <li>
         <Link to="/">Dashboard</Link>
       </li>
       <li>
         <Link to="/add-contest">Add New Contest</Link>
       </li>
-    </ul>
+    </ul> */}
   </section>
 )
 

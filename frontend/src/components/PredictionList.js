@@ -1,18 +1,19 @@
 import React from 'react';
 import './PredictionList.css';
 
-function PredictionList({selectedGuessable}){
+function PredictionList({ selectedGuessable }) {
 
-  if(selectedGuessable != null){
-      return(
-        <>
+  if (selectedGuessable != null) {
+    return (
+      <>
         <ul className="prediction-list">
-        {selectedGuessable._embedded.predictions.map( prediction => {
-          return <li value={prediction.id} key={prediction.id} >{prediction.player.name} predicts {prediction.predictionTitle}</li>
-        })}
+          {selectedGuessable._embedded.predictions.map(prediction => {
+            return <ul className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.player.name} predicts {prediction.predictionTitle}</ul>
+          })}
         </ul>
-        </>
-      )} return null
+      </>
+    )
+  } return null
 }
 
 export default PredictionList;

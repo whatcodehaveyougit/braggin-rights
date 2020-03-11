@@ -1,8 +1,9 @@
-.app-title {
-	color: ;
-	padding: 20px;
-	font-size: 3em;
-	font-family: "Press Start 2P";
+body > main {
+	display: grid;
+	grid-template-columns: 4fr 3fr;
+	grid-row-gap: 0;
+	grid-column-gap: 2em;
+	text-decoration: none;
 }
 
 #navbar ul {
@@ -10,17 +11,18 @@
 	text-align: center;
 	font-size: 2em;
 	background-color: white;
+	text-decoration: none;
 }
 
-#navbar li {
+/* #navbar li {
 	display: inline;
-	padding: 20px;
 	text-align: center;
-}
+} */
 
 #navbar {
 	background-color: lightgrey;
 	padding: 5px;
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 	text-align: center;
+	text-decoration: none;
 }
