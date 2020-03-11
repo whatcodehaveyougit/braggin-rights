@@ -33,7 +33,7 @@ class AddGuessable extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>What category do you want to predict?</h1>
+        <h1>Add a guessable to this ca</h1>
         <input className="form-text" value={this.state.guessable} onChange={this.handleGuessableChange} />
         <div>
           <input className="form-submit" type="submit" value="Submit Category" />

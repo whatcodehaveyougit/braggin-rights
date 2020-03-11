@@ -11,12 +11,14 @@ class Dashboard extends Component {
       contests:  [],
       createdContest: null,
       createdGuessable: null,
-      createdPlayer: null
+      createdPlayer: null,
+      
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
+    this.handleSelectedContest = this.handleSelectedContest.bind(this);
   }
 
   componentDidMount(){
@@ -26,6 +28,12 @@ class Dashboard extends Component {
       .then(res => res.json())
       .then(contests => this.setState({ contests: contests._embedded.contests }))
       .catch(err => console.error);
+  }
+
+  handleSelectedContest(selectedContest){
+    this.setState({
+      createdContest: selectedContest
+    })
   }
 
   handleContestSubmit(submittedContest) {
@@ -120,13 +128,15 @@ class Dashboard extends Component {
         <NavBar/>
             <Route
             path="/add-contest"
-            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit}
+            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} 
+            onGuessableSubmit={this.handleGuessableSubmit}
             createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
             />
             <Route
             exact
             path="/"
-            render={() => <ContestList contests={this.state.contests} />}
+            render={() => <ContestList contests={this.state.contests} onContestSelect={this.handleSelectedContest}
+            onGuessableSubmit={this.handleGuessableSubmit} />}
             />
         </React.Fragment>
       </Router>

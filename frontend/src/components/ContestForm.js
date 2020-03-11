@@ -53,7 +53,7 @@ class ContestForm extends Component {
     if (this.props.createdContest != null) {
       return (
         <>
-          <AddGuessable createdContest={this.props.createdContest} onGuessableSubmit={this.props.onGuessableSubmit} />
+        
           <AddPlayer onPlayerSubmit={this.props.onPlayerSubmit} />
           <AddPrediction createdGuessable={this.props.createdGuessable} createdPlayer={this.props.createdPlayer} onPredictionSubmit={this.props.onPredictionSubmit} />
         </>

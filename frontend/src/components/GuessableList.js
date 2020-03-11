@@ -16,6 +16,7 @@ function GuessableList({ selectedContest, onGuessableClick }) {
             return <li value={guessable.id} key={guessable.id} onClick={handleEvent}>{guessable.title}</li>
           })}
         </ul>
+        
       </>
     )
   } return null

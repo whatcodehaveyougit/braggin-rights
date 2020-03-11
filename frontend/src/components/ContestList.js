@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
 import './ContestList.css';
+import AddGuessableForm from './AddGuessableForm'
 
 class ContestList extends Component {
 
@@ -22,9 +23,12 @@ class ContestList extends Component {
     const selectedContest = this.props.contests.find(contest => {
       return contest.id == event.target.value
     })
+    this.props.onContestSelect(selectedContest)
     this.setState({
       selectedContest: selectedContest
     })
+     
+  
   }
 
   handleSelectGuessable(id) {
@@ -38,7 +42,11 @@ class ContestList extends Component {
       .catch(err => console.error);
   }
 
+
   render() {
+
+   
+
     return (
       <>
         <h1 className="title-text">Contests</h1>
@@ -48,12 +56,18 @@ class ContestList extends Component {
 
           })}
         </ul>
-        <a href="http://localhost:3000/add-contest" class="clickable-button">Add New Contest</a>
+        <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
+       { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest} 
+    onGuessableSubmit={this.props.onGuessableSubmit} /> : null}
       </>
     )
+   
+   
+    
   }
 }
+
 
 export default ContestList;
