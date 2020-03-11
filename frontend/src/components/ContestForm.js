@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AddGuessable from './AddGuessable.js'
+import AddPlayer from './AddPlayer.js'
 
 class ContestForm extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ContestForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const title = this.state.title;
-  
+
     if (!title) {
       return
     }
@@ -26,12 +27,15 @@ class ContestForm extends Component {
       title: ""
     })
   }
+
   handleTitleChange(event) {
     this.setState({ title: event.target.value })
   }
- 
+
 
   render() {
+
+    if(this.props.createdContest == null){
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -40,12 +44,17 @@ class ContestForm extends Component {
             <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
           </div>
             <input type="submit" value="Submit Contest Title" />
-          
-        
-        </form>
+          </form>
+        </>
+      )}
+
+      if(this.props.createdContest != null){
+        return(
+      <>
         <AddGuessable createdContest={this.props.createdContest} onGuessableSubmit={this.props.onGuessableSubmit}/>
+        <AddPlayer onPlayerSubmit={this.props.onPlayerSubmit} />
       </>
-    )
+    )}
   }
 }
 

@@ -9,10 +9,13 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       contests:  [],
-      createdContest: null
+      createdContest: null,
+      createdGuessable: null,
+      createdPlayer: null
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
+    this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -42,7 +45,7 @@ class Dashboard extends Component {
           // console.log(contest)
           const updatedContests = [...this.state.contests, contest];
           this.setState({
-            
+
             contests: updatedContests,
             createdContest: contest
           });
@@ -50,7 +53,7 @@ class Dashboard extends Component {
   }
 
   handleGuessableSubmit(submittedGuessable){
-   
+
     fetch('http://localhost:8080/guessables', {
       method: 'POST',
       headers: {
@@ -65,10 +68,31 @@ class Dashboard extends Component {
     })
     .then(res => res.json())
     .then(guessable =>{
-          console.log(guessable)
+          this.setState({
+            createdGuessable: guessable
+          })
           });
-        }
-  
+  }
+
+  handlePlayerSubmit(submittedPlayer){
+    fetch('http://localhost:8080/players', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: submittedPlayer.name
+      })
+    })
+    .then(res => res.json())
+    .then(player =>{
+          this.setState({
+            createdPlayer: player
+          })
+        });
+  }
+
 
   render() {
     return(
@@ -77,8 +101,8 @@ class Dashboard extends Component {
         <NavBar/>
             <Route
             path="/add-contest"
-            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit} 
-            createdContest={this.state.createdContest} />}
+            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit}
+            createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} onPlayerSubmit={this.handlePlayerSubmit} />}
             />
             <Route
             exact
