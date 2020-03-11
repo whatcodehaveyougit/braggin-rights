@@ -1,8 +1,9 @@
-.prediction-list{
-  list-style-type: none;
+.prediction-list {
+	list-style-type: none;
 }
 
-.prediction-list li{
-  font-size: 20px;
-  margin-bottom: 20px;
+.prediction-list li {
+	font-size: 20px;
+	color: red;
+	margin-bottom: 20px;
 }

@@ -1,16 +1,26 @@
-#navbar ul{
-  list-style-type: none;
-  color: blue;
-  text-align: center;
+.app-title {
+	color: ;
+	padding: 20px;
+	font-size: 3em;
+	font-family: "Press Start 2P";
 }
 
-#navbar li{
-    display: inline;
-    padding: 20px;
+#navbar ul {
+	list-style-type: none;
+	text-align: center;
+	font-size: 2em;
+	background-color: white;
 }
 
-#navbar{
-  background-color: lightgrey;
-  padding: 5px;
-  margin-bottom: 40px;
+#navbar li {
+	display: inline;
+	padding: 20px;
+	text-align: center;
+}
+
+#navbar {
+	background-color: lightgrey;
+	padding: 5px;
+	margin-bottom: 40px;
+	text-align: center;
 }

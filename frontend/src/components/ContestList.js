@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
 import './ContestList.css';
 
 class ContestList extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       selectedContest: null,
@@ -15,7 +15,7 @@ class ContestList extends Component {
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
   }
 
-  handleSelectContest(event){
+  handleSelectContest(event) {
     this.setState({
       selectedGuessable: null
     })
@@ -27,30 +27,31 @@ class ContestList extends Component {
     })
   }
 
-  handleSelectGuessable(id){
+  handleSelectGuessable(id) {
     const selectedGuessable = this.state.selectedContest.guessables.find(guessable => {
       return guessable.id === id
     })
     const correctId = selectedGuessable.id
     fetch(`http://localhost:8080/guessables/${correctId}`)
       .then(res => res.json())
-      .then(fetchedGuessable => this.setState({selectedGuessable: fetchedGuessable}))
+      .then(fetchedGuessable => this.setState({ selectedGuessable: fetchedGuessable }))
       .catch(err => console.error);
-    }
-
-    render(){
-      return(
-        <>
-        <ul className="contest-list">
-        {this.props.contests.map ( contest => {
-          return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-        })}
-        </ul>
-        <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable}/>
-        <PredictionList selectedGuessable={this.state.selectedGuessable} />
-        </>
-      )
-    }
   }
 
-  export default ContestList;
+  render() {
+    return (
+      <>
+        <h1 className="contest-title">Contests</h1>
+        <ul className="contest-list">
+          {this.props.contests.map(contest => {
+            return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
+          })}
+        </ul>
+        <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
+        <PredictionList selectedGuessable={this.state.selectedGuessable} />
+      </>
+    )
+  }
+}
+
+export default ContestList;
