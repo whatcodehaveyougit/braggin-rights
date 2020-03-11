@@ -16,6 +16,7 @@ class Dashboard extends Component {
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
+    this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -45,7 +46,6 @@ class Dashboard extends Component {
           // console.log(contest)
           const updatedContests = [...this.state.contests, contest];
           this.setState({
-
             contests: updatedContests,
             createdContest: contest
           });
@@ -93,6 +93,25 @@ class Dashboard extends Component {
         });
   }
 
+  handlePredictionSubmit(submittedPrediction){
+    fetch('http://localhost:8080/predictions', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        predictionTitle: submittedPrediction.predictionTitle,
+        player: `http://localhost:8080/players/${this.state.createdPlayer.id}`,
+        guessable: `http://localhost:8080/guessables/${this.state.createdGuessable.id}`
+      })
+    })
+    .then(res => res.json())
+    .then(prediction =>{
+          console.log(prediction)
+        });
+  }
+
 
   render() {
     return(
@@ -102,7 +121,7 @@ class Dashboard extends Component {
             <Route
             path="/add-contest"
             render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit}
-            createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} onPlayerSubmit={this.handlePlayerSubmit} />}
+            createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
             />
             <Route
             exact
