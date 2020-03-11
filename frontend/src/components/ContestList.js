@@ -1,42 +1,56 @@
 import React, {Component} from 'react';
-import Contest from './Contest'
-import ContestSelector from './ContestSelector'
-
+import GuessableList from './GuessableList'
+import PredictionList from './PredictionList'
+import './ContestList.css';
 
 class ContestList extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      selectedContest: null
+      selectedContest: null,
+      selectedGuessable: null
     }
-    this.handleContestSelected = this.handleContestSelected.bind(this)
-    this.getContestById = this.getContestById.bind(this)
+    this.handleSelectContest = this.handleSelectContest.bind(this)
+    this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
   }
 
-
-  handleContestSelected(id){
-    const intId = parseInt(id)
-    this.setState({selectedContest: intId})
-  }
-
-  getContestById(){
-    const selectedContest = this.props.contests.find(contest => {
-      return contest.id === this.state.selectedContest
+  handleSelectContest(event){
+    this.setState({
+      selectedGuessable: null
     })
-    return selectedContest
+    const selectedContest = this.props.contests.find(contest => {
+      return contest.id == event.target.value
+    })
+    this.setState({
+      selectedContest: selectedContest
+    })
   }
 
-  render(){
-    return(
-      <>
-      <h2>Your Contests</h2>
-      <ContestSelector contests={this.props.contests} onContestSelected={this.handleContestSelected} />
-      <Contest selectedContest={this.getContestById()} />
-      </>
-    )
+  handleSelectGuessable(id){
+    const selectedGuessable = this.state.selectedContest.guessables.find(guessable => {
+      return guessable.id === id
+    })
+    const correctId = selectedGuessable.id
+    fetch(`http://localhost:8080/guessables/${correctId}`)
+      .then(res => res.json())
+      .then(fetchedGuessable => this.setState({selectedGuessable: fetchedGuessable}))
+      .catch(err => console.error);
+    }
+
+    render(){
+      return(
+        <>
+        <ul className="contest-list">
+        {this.props.contests.map ( contest => {
+          return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
+        })}
+        </ul>
+        <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable}/>
+        <PredictionList selectedGuessable={this.state.selectedGuessable} />
+        </>
+      )
+    }
   }
 
-}
-
-export default ContestList;
+  export default ContestList;

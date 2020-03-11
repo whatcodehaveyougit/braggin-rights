@@ -62,19 +62,19 @@ public class Guessable {
         this.result = result;
     }
 
-//    public List<Guessable> getPredictions() {
-//        return guessables;
-//    }
-//
-//    public void setPredictions(List<Guessable> predictions) {
-//        this.guessables = guessables;
-//    }
-
     public Contest getContest() {
         return contest;
     }
 
     public void setContest(Contest contest) {
         this.contest = contest;
+    }
+
+    public List<Prediction> getPredictions() {
+        return predictions;
+    }
+
+    public void setPredictions(List<Prediction> predictions) {
+        this.predictions = predictions;
     }
 }

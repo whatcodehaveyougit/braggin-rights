@@ -1,0 +1,8 @@
+.prediction-list{
+  list-style-type: none;
+}
+
+.prediction-list li{
+  font-size: 20px;
+  margin-bottom: 20px;
+}

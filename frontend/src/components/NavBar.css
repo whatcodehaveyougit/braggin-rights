@@ -1,16 +1,16 @@
-ul{
+#navbar ul{
   list-style-type: none;
   color: blue;
   text-align: center;
 }
 
-li{
+#navbar li{
     display: inline;
     padding: 20px;
 }
 
 #navbar{
   background-color: lightgrey;
-  padding: 50px;
-  margin-bottom: 20px;
+  padding: 5px;
+  margin-bottom: 40px;
 }

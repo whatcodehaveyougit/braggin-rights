@@ -1,0 +1,19 @@
+.contest-list li{
+  font-size: 20px;
+  color: #000;
+  border: 2px solid black;
+  padding: 20px;
+  max-width: 150px;
+  display: inline;
+  margin: 10px;
+}
+
+.contest-list ul{
+  list-style-type: none;
+  color: blue;
+  text-align: center;
+}
+
+.selected{
+  background-color: red;
+}

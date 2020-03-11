@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ContestList from '../components/ContestList.js'
-import Contest from '../components/Contest.js'
 import NavBar from '../components/NavBar'
 import {BrowserRouter as Router, Route } from "react-router-dom"
 import ContestForm from '../components/ContestForm.js'
@@ -76,10 +75,6 @@ class Dashboard extends Component {
       <Router>
         <React.Fragment>
         <NavBar/>
-            <Route
-            path={`/contests/:id`}
-            component={Contest}
-            />
             <Route
             path="/add-contest"
             render={() => <ContestForm onContestSubmit={this.handleContestSubmit} onGuessableSubmit={this.handleGuessableSubmit} 
