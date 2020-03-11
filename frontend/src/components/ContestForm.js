@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import AddGuessable from './AddGuessable.js'
+import AddPlayer from './AddPlayer.js'
+import AddPrediction from './AddPrediction.js'
 
 class ContestForm extends Component {
   constructor(props) {
@@ -26,26 +28,38 @@ class ContestForm extends Component {
       title: ""
     })
   }
+
   handleTitleChange(event) {
     this.setState({ title: event.target.value })
   }
 
 
   render() {
-    return (
-      <>
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-wrap">
-            <h1>Enter Name Of Contest</h1>
-            <input className="form-text" type="text" value={this.state.title} onChange={this.handleTitleChange} />
-          </div>
-          <input className="form-submit" type="submit" value="Submit Contest" />
 
+    if (this.props.createdContest == null) {
+      return (
+        <>
+          <form onSubmit={this.handleSubmit}>
+            <div className="input-wrap">
+              <h1>Enter Name Of Contest</h1>
+              <input className="form-text" type="text" value={this.state.title} onChange={this.handleTitleChange} />
+            </div>
+            <input className="form-submit" type="submit" value="Submit Contest Title" />
+          </form>
+        </>
+      )
+    }
 
-        </form>
-        <AddGuessable createdContest={this.props.createdContest} onGuessableSubmit={this.props.onGuessableSubmit} />
-      </>
-    )
+    if (this.props.createdContest != null) {
+      return (
+        <>
+          <AddGuessable createdContest={this.props.createdContest} onGuessableSubmit={this.props.onGuessableSubmit} />
+          <AddPlayer onPlayerSubmit={this.props.onPlayerSubmit} />
+          <AddPrediction createdGuessable={this.props.createdGuessable} createdPlayer={this.props.createdPlayer} onPredictionSubmit={this.props.onPredictionSubmit} />
+        </>
+      )
+    }
+    return null
   }
 }
 
