@@ -4,8 +4,7 @@ class AddGuessable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          guessable: "",
-          createdContest: this.props.createdContest
+          guessable: ""
         };
       this.handleGuessableChange = this.handleGuessableChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
@@ -14,14 +13,12 @@ class AddGuessable extends Component {
     handleSubmit(event) {
       event.preventDefault();
 
-      const createdContest = this.props.createdContest;
       const guessableTitle = this.state.guessable;
 
         if (!guessableTitle) {
           return
         }
         this.props.onGuessableSubmit({
-          url: createdContest,
           title: guessableTitle
         })
         this.setState({

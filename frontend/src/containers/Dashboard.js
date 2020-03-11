@@ -43,36 +43,33 @@ class Dashboard extends Component {
           // console.log(contest)
           const updatedContests = [...this.state.contests, contest];
           this.setState({
-            createdContest: contest,
-            contests: updatedContests
+            
+            contests: updatedContests,
+            createdContest: contest
           });
         })
   }
 
-  handleGuessableSubmit(postUrl, submittedGuessable){
-    console.log(submittedGuessable);
-    console.log(postUrl.url._links.self)
-
-    // fetch('http://localhost:8080/contests', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     title: submittedContest.title
-    //   })
-    // })
-    // .then(res => res.json())
-    // .then(contest =>{
-    //       // console.log(contest)
-    //       const updatedContests = [...this.state.contests, contest];
-    //       this.setState({
-    //         createdContest: contest,
-    //         contests: updatedContests
-    //       });
-    //     })
-  }
+  handleGuessableSubmit(submittedGuessable){
+   
+    fetch('http://localhost:8080/guessables', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: submittedGuessable.title,
+        contest: `http://localhost:8080/contests/${this.state.createdContest.id}`,
+        result: ""
+      })
+    })
+    .then(res => res.json())
+    .then(guessable =>{
+          console.log(guessable)
+          });
+        }
+  
 
   render() {
     return(
