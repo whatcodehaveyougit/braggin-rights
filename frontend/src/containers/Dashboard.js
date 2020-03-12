@@ -32,8 +32,11 @@ class Dashboard extends Component {
         },
         body: JSON.stringify({
         })
-      })
-    }
+      }).then(() => {
+            const newContestArray = this.state.contests.filter(contest => contest.id !== deletedContestId)
+            this.setState({contests: newContestArray})
+           })
+     }
 
 
   componentDidMount(){
