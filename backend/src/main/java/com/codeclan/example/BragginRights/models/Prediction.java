@@ -13,11 +13,11 @@ public class Prediction {
     @Column(name="prediction")
     private String predictionTitle;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="player_id", nullable = false)
     private Player player;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="guessable_id", nullable=false)
     private Guessable guessable;
 

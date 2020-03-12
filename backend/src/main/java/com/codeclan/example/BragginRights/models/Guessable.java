@@ -18,11 +18,11 @@ public class Guessable {
     @Column(name="result")
     private String result;
 
-    @OneToMany(mappedBy = "guessable")
+    @OneToMany(mappedBy = "guessable",cascade = CascadeType.REMOVE)
     // Changed this from Guessable to predictions
     private List<Prediction> predictions;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="contest_id", nullable = false)
     private Contest contest;
 

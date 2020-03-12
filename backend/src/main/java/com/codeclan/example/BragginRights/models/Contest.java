@@ -1,6 +1,7 @@
 package com.codeclan.example.BragginRights.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Contest {
     private String title;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "contest")
+    @OneToMany(mappedBy = "contest", cascade = CascadeType.REMOVE)
     private List<Guessable> guessables;
 
 
