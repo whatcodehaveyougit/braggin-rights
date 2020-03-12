@@ -36,11 +36,14 @@ public class DataLoader implements ApplicationRunner {
 
 //        Korfball Contest:
 
-        Contest contest1 = new Contest("Korfball");
+        Contest contest1 = new Contest("Korfball League");
         contestRepo.save(contest1);
 
-        Guessable guessable1 = new Guessable("Champion", contest1);
+        Guessable guessable1 = new Guessable("Winner", contest1);
         guessableRepo.save(guessable1);
+
+        Guessable guessable6 = new Guessable("Goals in Final", contest1);
+        guessableRepo.save(guessable6);
 
         Guessable guessable2 = new Guessable("Top Scorer", contest1);
         guessableRepo.save(guessable2);
@@ -55,6 +58,8 @@ public class DataLoader implements ApplicationRunner {
         Prediction prediction2 = new Prediction("Split", player1, guessable2);
         predictionRepo.save(prediction2);
 
+        Prediction prediction11 = new Prediction("46", player1, guessable6);
+        predictionRepo.save(prediction11);
 
         Player player2 = new Player("Catherine");
         playerRepo.save(player2);
@@ -64,6 +69,9 @@ public class DataLoader implements ApplicationRunner {
 
         Prediction prediction4 = new Prediction("Snell", player2, guessable2);
         predictionRepo.save(prediction4);
+
+        Prediction prediction12 = new Prediction("48", player2, guessable6);
+        predictionRepo.save(prediction12);
 
 //        Football Contest
 

@@ -12,7 +12,7 @@ class Dashboard extends Component {
       // createdContest: null,
       createdGuessable: null,
       createdPlayer: null,
-      
+
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
@@ -28,6 +28,8 @@ class Dashboard extends Component {
       .then(res => res.json())
       .then(contests => this.setState({ contests: contests._embedded.contests }))
       .catch(err => console.error);
+
+      this.setState({contestAdded: false})
   }
 
   handleSelectedContest(selectedContest){
@@ -51,11 +53,9 @@ class Dashboard extends Component {
     })
     .then(res => res.json())
     .then(contest =>{
-          // console.log(contest)
           const updatedContests = [...this.state.contests, contest];
           this.setState({
-            contests: updatedContests,
-            createdContest: contest
+            contests: updatedContests
           });
         })
   }
@@ -78,7 +78,7 @@ class Dashboard extends Component {
     .then(guessable =>{
           debugger
           this.setState({
-            
+
             createdGuessable: guessable
           })
           });
@@ -130,7 +130,7 @@ class Dashboard extends Component {
         <NavBar/>
             <Route
             path="/add-contest"
-            render={() => <ContestForm onContestSubmit={this.handleContestSubmit} 
+            render={() => <ContestForm onContestSubmit={this.handleContestSubmit}
             onGuessableSubmit={this.handleGuessableSubmit}
             createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
             />

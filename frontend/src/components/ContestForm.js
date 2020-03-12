@@ -9,7 +9,6 @@ class ContestForm extends Component {
     this.state = {
       title: ""
     };
-
     this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -35,8 +34,6 @@ class ContestForm extends Component {
 
 
   render() {
-
-    if (this.props.createdContest == null) {
       return (
         <>
           <form onSubmit={this.handleSubmit}>
@@ -49,18 +46,6 @@ class ContestForm extends Component {
         </>
       )
     }
-
-    if (this.props.createdContest != null) {
-      return (
-        <>
-        
-          <AddPlayer onPlayerSubmit={this.props.onPlayerSubmit} />
-          <AddPrediction createdGuessable={this.props.createdGuessable} createdPlayer={this.props.createdPlayer} onPredictionSubmit={this.props.onPredictionSubmit} />
-        </>
-      )
-    }
-    return null
-  }
 }
 
 
