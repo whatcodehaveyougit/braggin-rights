@@ -47,7 +47,7 @@ class ContestList extends Component {
             return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
           })}
         </ul>
-        <a href="http://localhost:3000/add-contest" class="clickable-button">Add New Contest</a>
+        <a href="http://localhost:3000/add-contest" class="form-submit">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
       </>

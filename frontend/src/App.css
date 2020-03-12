@@ -1,7 +1,6 @@
 .App {
 	text-align: center;
-	background-color: #bdc3c7;
-	font-family: "Fredoka One";
+	font-family: "Passion One";
 }
 
 .App-logo {
@@ -41,7 +40,7 @@ ul {
 }
 
 li:not(.prediction-list) {
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: bold;
 	background-color: #3498db;
 	color: #f6f7eb;
@@ -57,15 +56,25 @@ li:not(.prediction-list) {
 	display: inline-block;
 }
 
-.clickable-button,
+li:hover {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
 .form-submit {
+	position: relative;
+	top: 0;
+	margin-top: 0;
+	margin-bottom: 10px;
+	box-shadow: 0 10px 0 0 #000000;
+	font-family: Passion One;
 	font-size: 20px;
 	font-weight: bold;
+	background-color: #16a085;
 	color: #f6f7eb;
-	background-color: #1abc9c;
 	border: 4px solid #34495e;
 	border-radius: 100px;
-	box-shadow: 0 10px 0 0 #2c3e50;
 	padding: 20px;
 	padding-bottom: 20px;
 	width: 250px;
@@ -76,10 +85,25 @@ li:not(.prediction-list) {
 	display: inline-block;
 }
 
+.form-submit:active {
+	box-shadow: none;
+	top: 10px;
+	margin-bottom: 0;
+}
+
+.form-submit:hover {
+	opacity: 1;
+}
+
+.form-submit:active,
+.form-submit:focus {
+	outline: 0;
+}
+
 .form-text {
 	font-size: 20px;
 	font-weight: bold;
-	border: 2px solid #34495e;
+	border: 4px solid #34495e;
 	padding: 10px;
 	width: 300px;
 }
