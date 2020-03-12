@@ -10,12 +10,12 @@ class Dashboard extends Component {
     this.state = {
       contests:  [],
       // createdContest: null,
-      createdGuessable: null,
-      createdPlayer: null,
+      // createdGuessable: null,
+      createdPlayer: null
 
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
-    this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
+    // this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
     this.handleSelectedContest = this.handleSelectedContest.bind(this);
@@ -58,30 +58,6 @@ class Dashboard extends Component {
             contests: updatedContests
           });
         })
-  }
-
-  handleGuessableSubmit(submittedGuessable){
-
-    fetch('http://localhost:8080/guessables', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: submittedGuessable.title,
-        contest: `http://localhost:8080/contests/${this.state.createdContest.id}`,
-        result: ""
-      })
-    })
-    .then(res => res.json())
-    .then(guessable =>{
-          debugger
-          this.setState({
-
-            createdGuessable: guessable
-          })
-          });
   }
 
   handlePlayerSubmit(submittedPlayer){
@@ -131,8 +107,7 @@ class Dashboard extends Component {
             <Route
             path="/add-contest"
             render={() => <ContestForm onContestSubmit={this.handleContestSubmit}
-            onGuessableSubmit={this.handleGuessableSubmit}
-            createdContest={this.state.createdContest} createdGuessable={this.state.createdGuessable} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
+            createdContest={this.state.createdContest} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
             />
             <Route
             exact

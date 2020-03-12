@@ -3,7 +3,7 @@ import './PredictionList.css';
 
 function PredictionList({ selectedGuessable }) {
 
-  if (selectedGuessable != null) {
+  if (selectedGuessable != null && selectedGuessable._embedded.predictions != null) {
     return (
       <>
         <ul className="prediction-list">

@@ -15,6 +15,7 @@ class ContestList extends Component {
     this.handleSelectContest = this.handleSelectContest.bind(this)
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
     // this.displayContests = this.displayContests.bind(this);
+    this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
   }
 
   handleSelectContest(event) {
@@ -28,8 +29,8 @@ class ContestList extends Component {
     this.setState({
       selectedContest: selectedContest
     })
-     
-  
+
+
   }
 
   handleSelectGuessable(id) {
@@ -43,6 +44,28 @@ class ContestList extends Component {
       .catch(err => console.error);
   }
 
+  handleGuessableSubmit(submittedGuessable){
+
+    fetch('http://localhost:8080/guessables', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: submittedGuessable.title,
+        contest: `http://localhost:8080/contests/${this.state.selectedContest.id}`,
+        result: ""
+      })
+    })
+    .then(res => res.json())
+    .then(guessable =>{
+          this.setState({
+            selectedGuessable: guessable
+          })
+          });
+  }
+
 
   render() {
 
@@ -52,19 +75,19 @@ class ContestList extends Component {
         <ul className="contest-list">
     { this.props.contests.map(contest => {
       return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-    
+
     })}
     </ul>
         <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
-       { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest} 
-    onGuessableSubmit={this.props.onGuessableSubmit} /> : null}
+       { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
+    onGuessableSubmit={this.handleGuessableSubmit} /> : null}
       </>
     )
-   
-   
-    
+
+
+
   }
 }
 
