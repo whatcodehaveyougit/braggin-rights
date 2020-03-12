@@ -99,7 +99,7 @@ class ContestList extends Component {
 
           })}
         </ul>
-        <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
+        <a href="http://localhost:3000/add-contest" className="form-submit">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
 

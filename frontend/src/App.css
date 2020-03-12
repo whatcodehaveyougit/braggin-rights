@@ -1,6 +1,6 @@
 .App {
 	text-align: center;
-	font-family: "Passion One";
+	font-family: "Bungee";
 }
 
 .App-logo {
@@ -15,7 +15,7 @@
 
 .title-text {
 	font-size: 4em;
-	font-family: "Bungee Shade";
+	font-family: "Bungee Inline", cursive;
 	text-decoration: none;
 	color: #e74c3c;
 	margin-top: 0em;
@@ -40,7 +40,7 @@ ul {
 }
 
 li:not(.prediction-list) {
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: bold;
 	background-color: #3498db;
 	color: #f6f7eb;
@@ -68,7 +68,7 @@ li:hover {
 	margin-top: 0;
 	margin-bottom: 10px;
 	box-shadow: 0 10px 0 0 #000000;
-	font-family: Passion One;
+	font-family: "bungee";
 	font-size: 20px;
 	font-weight: bold;
 	background-color: #16a085;
@@ -106,4 +106,8 @@ li:hover {
 	border: 4px solid #34495e;
 	padding: 10px;
 	width: 300px;
+}
+
+.main-title {
+	font-family: "Bungee Shade";
 }
