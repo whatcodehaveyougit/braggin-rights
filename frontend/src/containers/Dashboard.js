@@ -9,7 +9,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       contests:  [],
-      createdContest: null,
+      // createdContest: null,
       createdGuessable: null,
       createdPlayer: null,
       
@@ -76,7 +76,9 @@ class Dashboard extends Component {
     })
     .then(res => res.json())
     .then(guessable =>{
+          debugger
           this.setState({
+            
             createdGuessable: guessable
           })
           });

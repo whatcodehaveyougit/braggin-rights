@@ -14,6 +14,7 @@ class ContestList extends Component {
     }
     this.handleSelectContest = this.handleSelectContest.bind(this)
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
+    // this.displayContests = this.displayContests.bind(this);
   }
 
   handleSelectContest(event) {
@@ -45,17 +46,15 @@ class ContestList extends Component {
 
   render() {
 
-   
-
     return (
       <>
         <h1 className="title-text">Contests</h1>
         <ul className="contest-list">
-          {this.props.contests.map(contest => {
-            return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-
-          })}
-        </ul>
+    { this.props.contests.map(contest => {
+      return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
+    
+    })}
+    </ul>
         <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
