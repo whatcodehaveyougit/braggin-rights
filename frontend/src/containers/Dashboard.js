@@ -18,7 +18,23 @@ class Dashboard extends Component {
     // this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
     this.handleSelectedContest = this.handleSelectedContest.bind(this);
+    this.handleDeleteContest = this.handleDeleteContest.bind(this);
   }
+
+  handleDeleteContest(deletedContestId) {
+  console.log(deletedContestId)
+  const url=`http://localhost:8080/contests/${deletedContestId}`
+  fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        })
+      })
+    }
+
 
   componentDidMount(){
       const url = 'http://localhost:8080/contests'
@@ -94,7 +110,7 @@ class Dashboard extends Component {
             <Route
             exact
             path="/"
-            render={() => <ContestList contests={this.state.contests} onContestSelect={this.handleSelectedContest}
+            render={() => <ContestList contests={this.state.contests} onContestSelect={this.handleSelectedContest} onContestDelete={this.handleDeleteContest}
             onGuessableSubmit={this.handleGuessableSubmit} />}
             />
         </React.Fragment>

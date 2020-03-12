@@ -4,6 +4,7 @@ import PredictionList from './PredictionList'
 import './ContestList.css';
 import AddGuessableForm from './AddGuessableForm';
 import AddPlayerForm from './AddPlayerForm';
+import DeleteContest from './DeleteContest';
 
 
 class ContestList extends Component {
@@ -96,21 +97,22 @@ class ContestList extends Component {
         <ul className="contest-list">
     { this.props.contests.map(contest => {
       return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-
     })}
     </ul>
         <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
+        <DeleteContest selectedContest={this.state.selectedContest} onContestDelete={this.props.onContestDelete}/>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
+
 
        { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
        onGuessableSubmit={this.handleGuessableSubmit} /> : null}
 
       { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
       onPlayerSubmit={this.handlePlayerSubmit} /> : null}
+
       </>
     )
-
 
 
   }
