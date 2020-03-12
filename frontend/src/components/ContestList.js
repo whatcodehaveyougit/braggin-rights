@@ -45,7 +45,6 @@ class ContestList extends Component {
         <ul className="contest-list">
           {this.props.contests.map(contest => {
             return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-
           })}
         </ul>
         <a href="http://localhost:3000/add-contest" class="clickable-button">Add New Contest</a>
