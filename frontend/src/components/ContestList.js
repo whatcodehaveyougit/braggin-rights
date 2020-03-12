@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
 import './ContestList.css';
-import AddGuessableForm from './AddGuessableForm'
+import AddGuessableForm from './AddGuessableForm';
+import AddPlayerForm from './AddPlayerForm';
+
 
 class ContestList extends Component {
 
@@ -16,6 +18,7 @@ class ContestList extends Component {
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
     // this.displayContests = this.displayContests.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
+    this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
   }
 
   handleSelectContest(event) {
@@ -66,6 +69,24 @@ class ContestList extends Component {
           });
   }
 
+  handlePlayerSubmit(submittedPlayer){
+    fetch('http://localhost:8080/players', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: submittedPlayer.name
+      })
+    })
+    .then(res => res.json())
+    .then(player =>{
+          console.log(submittedPlayer)
+          })
+      };
+
+
 
   render() {
 
@@ -81,8 +102,12 @@ class ContestList extends Component {
         <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
+
        { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
-    onGuessableSubmit={this.handleGuessableSubmit} /> : null}
+       onGuessableSubmit={this.handleGuessableSubmit} /> : null}
+
+      { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
+      onPlayerSubmit={this.handlePlayerSubmit} /> : null}
       </>
     )
 

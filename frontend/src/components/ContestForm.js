@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AddGuessable from './AddGuessable.js'
 import AddPlayer from './AddPlayer.js'
 import AddPrediction from './AddPrediction.js'
 

@@ -11,12 +11,11 @@ class Dashboard extends Component {
       contests:  [],
       // createdContest: null,
       // createdGuessable: null,
-      createdPlayer: null
+      // createdPlayer: null
 
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
     // this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
-    this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
     this.handleSelectedContest = this.handleSelectedContest.bind(this);
   }
@@ -60,24 +59,7 @@ class Dashboard extends Component {
         })
   }
 
-  handlePlayerSubmit(submittedPlayer){
-    fetch('http://localhost:8080/players', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: submittedPlayer.name
-      })
-    })
-    .then(res => res.json())
-    .then(player =>{
-          this.setState({
-            createdPlayer: player
-          })
-        });
-  }
+
 
   handlePredictionSubmit(submittedPrediction){
     fetch('http://localhost:8080/predictions', {
