@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-class AddPlayer extends Component {
-
+class AddPlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +10,7 @@ class AddPlayer extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
   }
 
-  handleSubmit(event) {
+  handleSubmit(event){
     event.preventDefault();
 
     const name = this.state.name;
@@ -31,38 +30,18 @@ class AddPlayer extends Component {
     this.setState({ name: event.target.value })
   }
 
-<<<<<<< HEAD
   render(){
     return(
     <form onSubmit={this.handleSubmit}>
-      <h3>Add a Player!</h3>
-        <div>
-          <label>First Player</label>
-          <input value={this.state.name} onChange={this.handleNameChange} />
-        </div>
-=======
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <h3>Add a Player!</h3>
-        <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
->>>>>>> develop
+      <h1>Add a player!</h1>
+          <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
         <div>
           <input className="form-submit" type="submit" value="Submit Player" />
         </div>
-<<<<<<< HEAD
-        <div className="guessable-list">
-          <p>test</p>
-          { this.props.map(guessable => {
-            return <input></input>
-          })}
-        </div>
     </form>
-=======
-      </form>
->>>>>>> develop
     )
   }
+
 }
 
-export default AddPlayer
+export default AddPlayerForm
