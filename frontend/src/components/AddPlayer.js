@@ -11,7 +11,7 @@ class AddPlayer extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
 
     const name = this.state.name;
@@ -31,6 +31,7 @@ class AddPlayer extends Component {
     this.setState({ name: event.target.value })
   }
 
+<<<<<<< HEAD
   render(){
     return(
     <form onSubmit={this.handleSubmit}>
@@ -39,9 +40,17 @@ class AddPlayer extends Component {
           <label>First Player</label>
           <input value={this.state.name} onChange={this.handleNameChange} />
         </div>
+=======
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <h3>Add a Player!</h3>
+        <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
+>>>>>>> develop
         <div>
-          <input type="submit" value="Submit Player" />
+          <input className="form-submit" type="submit" value="Submit Player" />
         </div>
+<<<<<<< HEAD
         <div className="guessable-list">
           <p>test</p>
           { this.props.map(guessable => {
@@ -49,6 +58,9 @@ class AddPlayer extends Component {
           })}
         </div>
     </form>
+=======
+      </form>
+>>>>>>> develop
     )
   }
 }
