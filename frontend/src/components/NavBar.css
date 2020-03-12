@@ -9,7 +9,7 @@ body > main {
 #navbar ul {
 	list-style-type: none;
 	text-align: center;
-	font-size: 2em;
+	font-size: 6em;
 	background-color: white;
 	text-decoration: none;
 }
@@ -20,9 +20,14 @@ body > main {
 } */
 
 #navbar {
-	background-color: lightgrey;
+	background-color: #888888;
 	padding: 5px;
-	margin-bottom: 10px;
 	text-align: center;
+	text-decoration: none;
+}
+
+a:link,
+a:visited {
+	color: #f6f7eb;
 	text-decoration: none;
 }

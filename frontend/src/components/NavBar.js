@@ -4,7 +4,7 @@ import './NavBar.css';
 
 const NavBar = () => (
   <section id="navbar">
-    <h1 className="title-text"><a href="http://localhost:3000/">Braggin' Rights</a></h1>
+    <h1 className="title-text"><a className="main-title" href="http://localhost:3000/">Braggin' Rights</a></h1>
     {/* <ul class>
       <li>
         <Link to="/">Dashboard</Link>
