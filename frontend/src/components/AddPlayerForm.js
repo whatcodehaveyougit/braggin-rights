@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './player-form.css'
 
 class AddPlayerForm extends Component {
   constructor(props) {
@@ -32,12 +33,26 @@ class AddPlayerForm extends Component {
 
   render(){
     return(
-    <form onSubmit={this.handleSubmit}>
-      <h1>Add a player!</h1>
-          <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
-        <div>
-          <input className="form-submit" type="submit" value="Submit Player" />
-        </div>
+    <form onSubmit={this.handleSubmit} className="player-form">
+      <section>
+        <h1>Add a player!</h1>
+            <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
+          <div>
+            <input className="form-submit" type="submit" value="Submit Player" />
+          </div>
+        </section>
+        <section>
+          <h1>Add this player's predictions!</h1>
+          { this.props.selectedContest.guessables.map (guessable => {
+            return <div>
+              <label >
+              { guessable.title }
+              </label><br/>
+              <input className="form-text"></input>
+              </div>
+          })}
+         <input className="form-submit" type="submit" value="Submit Player Predictions" />
+        </section>
     </form>
     )
   }
