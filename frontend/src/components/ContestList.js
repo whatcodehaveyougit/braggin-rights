@@ -21,6 +21,7 @@ class ContestList extends Component {
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
+    this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
   }
 
   handleSelectContest(event) {
@@ -82,32 +83,26 @@ class ContestList extends Component {
       })
     })
     .then(res => res.json())
-    .then(player =>{
-          console.log(submittedPlayer)
-          })
-          this.setState({
-            createdPlayer: submittedPlayer
-          })
-      };
+    .then(player => { this.setState({createdPlayer: player})})};
 
-      handlePredictionSubmit(submittedPrediction, guessablePredicted){
-        fetch('http://localhost:8080/predictions', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            predictionTitle: submittedPrediction,
-            player: this.state.createdPlayer,
-            guessable: guessablePredicted
-          })
+    handlePredictionSubmit(submittedPrediction, guessablePredicted){
+      fetch('http://localhost:8080/predictions', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          predictionTitle: submittedPrediction.title,
+          player: `http://localhost:8080/players/${this.state.createdPlayer.id}`,
+          guessable: `http://localhost:8080/guessables/${guessablePredicted.guessable}`
         })
-        .then(res => res.json())
-        .then(AddPredictionForm =>{
-              console.log(submittedPrediction)
-              })
-          };
+      })
+      .then(res => res.json())
+      .then(AddPredictionForm =>{
+        console.log(submittedPrediction)
+      })
+    };
 
 
 
@@ -132,7 +127,7 @@ class ContestList extends Component {
       { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
       onPlayerSubmit={this.handlePlayerSubmit} /> : null}
 
-      { this.state.createdPlayer ? <AddPredictionForm selectedContest={this.state.selectedContest} 
+      { this.state.createdPlayer ? <AddPredictionForm selectedContest={this.state.selectedContest}
       createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
       </>
     )
