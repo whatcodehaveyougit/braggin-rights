@@ -35,10 +35,18 @@ class AddPlayer extends Component {
     return(
     <form onSubmit={this.handleSubmit}>
       <h3>Add a Player!</h3>
-        <p>First Player</p>
+        <div>
+          <label>First Player</label>
           <input value={this.state.name} onChange={this.handleNameChange} />
+        </div>
         <div>
           <input type="submit" value="Submit Player" />
+        </div>
+        <div className="guessable-list">
+          <p>test</p>
+          { this.props.map(guessable => {
+            return <input></input>
+          })}
         </div>
     </form>
     )
