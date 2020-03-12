@@ -4,8 +4,8 @@ import PredictionList from './PredictionList'
 import './ContestList.css';
 import AddGuessableForm from './AddGuessableForm';
 import AddPlayerForm from './AddPlayerForm';
+import DeleteContest from './DeleteContest';
 import AddPredictionForm from './AddPredictionForm.js'
-// import AddPrediction from './AddPrediction';
 
 
 class ContestList extends Component {
@@ -50,7 +50,8 @@ class ContestList extends Component {
       .catch(err => console.error);
   }
 
-  handleGuessableSubmit(submittedGuessable){
+  handleGuessableSubmit(submittedGuessable) {
+
     fetch('http://localhost:8080/guessables', {
       method: 'POST',
       headers: {
@@ -63,15 +64,15 @@ class ContestList extends Component {
         result: ""
       })
     })
-    .then(res => res.json())
-    .then(guessable =>{
-          this.setState({
-            selectedGuessable: guessable
-          })
-          });
+      .then(res => res.json())
+      .then(guessable => {
+        this.setState({
+          selectedGuessable: guessable
+        })
+      });
   }
 
-  handlePlayerSubmit(submittedPlayer){
+  handlePlayerSubmit(submittedPlayer) {
     fetch('http://localhost:8080/players', {
       method: 'POST',
       headers: {
@@ -114,10 +115,10 @@ class ContestList extends Component {
         <ul className="contest-list">
     { this.props.contests.map(contest => {
       return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
-
     })}
-        </ul>
-        <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
+    </ul>
+        <a href="http://localhost:3000/add-contest" className="form-submit">Add New Contest</a>
+        <DeleteContest selectedContest={this.state.selectedContest} onContestDelete={this.props.onContestDelete}/>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
 
@@ -131,7 +132,6 @@ class ContestList extends Component {
       createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
       </>
     )
-
 
 
   }

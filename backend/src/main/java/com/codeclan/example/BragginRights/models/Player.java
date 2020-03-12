@@ -18,7 +18,7 @@ public class Player {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy="player")
+    @OneToMany(mappedBy="player", cascade = CascadeType.REMOVE)
     private List<Prediction> predictions;
 
     public Player(String name) {

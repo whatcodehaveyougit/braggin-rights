@@ -1,29 +1,58 @@
-body > main {
-	display: grid;
-	grid-template-columns: 4fr 3fr;
-	grid-row-gap: 0;
-	grid-column-gap: 2em;
-	text-decoration: none;
-}
-
 #navbar ul {
 	list-style-type: none;
 	text-align: center;
 	font-size: 6em;
-	background-color: white;
 	text-decoration: none;
 }
 
-/* #navbar li {
-	display: inline;
-	text-align: center;
-} */
-
 #navbar {
-	background-color: #888888;
-	padding: 5px;
-	text-align: center;
-	text-decoration: none;
+	background: linear-gradient(
+		270deg,
+		#16a085,
+		#27ae60,
+		#2980b9,
+		#8e44ad,
+		#34495e
+	);
+	background-size: 1000% 1000%;
+
+	-webkit-animation: AnimationName 30s ease infinite;
+	-moz-animation: AnimationName 30s ease infinite;
+	animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@-moz-keyframes AnimationName {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes AnimationName {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 a:link,
