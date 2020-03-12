@@ -1,6 +1,7 @@
 .list-of-predictions {
 	padding-bottom: 20px;
 	list-style-type: none;
-	font-size: 1.5em;
+	font-size: 4em;
 	border-color: black;
+	color: #34495e;
 }

@@ -48,7 +48,7 @@ class ContestList extends Component {
       .catch(err => console.error);
   }
 
-  handleGuessableSubmit(submittedGuessable){
+  handleGuessableSubmit(submittedGuessable) {
 
     fetch('http://localhost:8080/guessables', {
       method: 'POST',
@@ -62,15 +62,15 @@ class ContestList extends Component {
         result: ""
       })
     })
-    .then(res => res.json())
-    .then(guessable =>{
-          this.setState({
-            selectedGuessable: guessable
-          })
-          });
+      .then(res => res.json())
+      .then(guessable => {
+        this.setState({
+          selectedGuessable: guessable
+        })
+      });
   }
 
-  handlePlayerSubmit(submittedPlayer){
+  handlePlayerSubmit(submittedPlayer) {
     fetch('http://localhost:8080/players', {
       method: 'POST',
       headers: {
@@ -81,11 +81,11 @@ class ContestList extends Component {
         name: submittedPlayer.name
       })
     })
-    .then(res => res.json())
-    .then(player =>{
-          console.log(submittedPlayer)
-          })
-      };
+      .then(res => res.json())
+      .then(player => {
+        console.log(submittedPlayer)
+      })
+  };
 
 
 
@@ -99,18 +99,16 @@ class ContestList extends Component {
       return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
     })}
     </ul>
-        <a href="http://localhost:3000/add-contest" className="clickable-button">Add New Contest</a>
+        <a href="http://localhost:3000/add-contest" className="form-submit">Add New Contest</a>
         <DeleteContest selectedContest={this.state.selectedContest} onContestDelete={this.props.onContestDelete}/>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
-
 
        { this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
        onGuessableSubmit={this.handleGuessableSubmit} /> : null}
 
       { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
       onPlayerSubmit={this.handlePlayerSubmit} /> : null}
-
       </>
     )
 
