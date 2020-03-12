@@ -5,6 +5,7 @@ import './ContestList.css';
 import AddGuessableForm from './AddGuessableForm';
 import AddPlayerForm from './AddPlayerForm';
 import DeleteContest from './DeleteContest';
+import AddPredictionForm from './AddPredictionForm.js'
 
 
 class ContestList extends Component {
@@ -13,13 +14,14 @@ class ContestList extends Component {
     super(props);
     this.state = {
       selectedContest: null,
-      selectedGuessable: null
+      selectedGuessable: null,
+      createdPlayer: null
     }
     this.handleSelectContest = this.handleSelectContest.bind(this)
     this.handleSelectGuessable = this.handleSelectGuessable.bind(this)
-    // this.displayContests = this.displayContests.bind(this);
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
+    this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
   }
 
   handleSelectContest(event) {
@@ -81,11 +83,27 @@ class ContestList extends Component {
         name: submittedPlayer.name
       })
     })
-      .then(res => res.json())
-      .then(player => {
-        console.log(submittedPlayer)
+    .then(res => res.json())
+    .then(player => { this.setState({createdPlayer: player})})};
+
+    handlePredictionSubmit(submittedPrediction, guessablePredicted){
+      fetch('http://localhost:8080/predictions', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          predictionTitle: submittedPrediction.title,
+          player: `http://localhost:8080/players/${this.state.createdPlayer.id}`,
+          guessable: `http://localhost:8080/guessables/${guessablePredicted.guessable}`
+        })
       })
-  };
+      .then(res => res.json())
+      .then(AddPredictionForm =>{
+        console.log(submittedPrediction)
+      })
+    };
 
 
 
@@ -107,8 +125,11 @@ class ContestList extends Component {
         {this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
           onGuessableSubmit={this.handleGuessableSubmit} /> : null}
 
-        {this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
-          onPlayerSubmit={this.handlePlayerSubmit} /> : null}
+      { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
+      onPlayerSubmit={this.handlePlayerSubmit} /> : null}
+
+      { this.state.createdPlayer ? <AddPredictionForm selectedContest={this.state.selectedContest}
+      createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
       </>
     )
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AddPrediction from './AddPrediction.js'
 
 class ContestForm extends Component {
   constructor(props) {

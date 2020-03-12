@@ -34,10 +34,11 @@ class AddGuessableForm extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <h1>Add a guessable to this Contest</h1>
+          <h1 className="title-text">Add guessable to {this.props.selectedContest.title}</h1>
+          <h2>What would you like to predict the outcome of in {this.props.selectedContest.title}?</h2>
           <input className="form-text" value={this.state.guessable} onChange={this.handleGuessableChange} />
           <div>
-            <input className="form-submit" type="submit" value="Submit Category" />
+            <input className="form-submit" type="submit" value="Submit" />
           </div>
         </form>
       </>
