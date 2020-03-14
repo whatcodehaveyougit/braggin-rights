@@ -38,7 +38,7 @@ class ContestForm extends Component {
               <h1>Enter Name Of Contest</h1>
               <input className="form-text" type="text" value={this.state.title} onChange={this.handleTitleChange} />
             </div>
-            <input className="form-submit" type="submit" value="Submit Contest Title" />
+            <input className="form-submit" type="submit" value="Submit" />
           </form>
         </>
       )
