@@ -7,15 +7,18 @@ class AddPredictionForm extends Component {
         super(props);
         this.state = {
           prediction: "",
-          guessableToUpdateId: null
+          guessableToUpdateId: null,
+          test: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlePredictionChange = this.handlePredictionChange.bind(this)
         this.updateGuessableState = this.updateGuessableState.bind(this)
-          }
+        this.handlePlayerChange = this.handlePlayerChange.bind(this)
+        }
 
     updateGuessableState(guessableId){
         this.setState({guessableToUpdateId: guessableId})
+       
     }
 
     handleSubmit(event) {
@@ -41,8 +44,10 @@ class AddPredictionForm extends Component {
       handlePredictionChange(event) {
         this.setState({ prediction: event.target.value})
       }
-
       
+      handlePlayerChange(event) {
+        this.setState({ test: event.target.value})
+      }
 
     render(){
         return(
@@ -53,7 +58,10 @@ class AddPredictionForm extends Component {
                   return <form onSubmit={this.handleSubmit} key={guessable.title} >
                       <label> { guessable.title } </label> <br/>
                           <input className="form-text" onChange={this.handlePredictionChange} />
-                          <input className="hide-input" />
+
+{/* For some reason this is not working - why? */}
+                          <input value={this.props.createdPlayer.name} onChange={this.handlePlayerChange} className="hide-input" />
+
                       <input type="submit" className="form-submit prediction" value="Submit Prediction" onClick={() => this.updateGuessableState(guessable.id)} />
                   </form>
                 }

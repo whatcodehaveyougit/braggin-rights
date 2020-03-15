@@ -6,7 +6,7 @@ class AddGuessableForm extends Component {
     this.state = {
       guessable: ""
     };
-    this.handleGuessableChange = this.handleGuessableChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -26,8 +26,8 @@ class AddGuessableForm extends Component {
     })
   }
 
-  handleGuessableChange(event) {
-    this.setState({ guessable: event.target.value })
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   render() {
@@ -36,7 +36,7 @@ class AddGuessableForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <h1 className="title-text">Add guessable to {this.props.selectedContest.title}</h1>
           <h2>What would you like to predict the outcome of in {this.props.selectedContest.title}?</h2>
-          <input className="form-text" value={this.state.guessable} onChange={this.handleGuessableChange} />
+          <input className="form-text" name="guessable" value={this.state.guessable} onChange={this.handleChange} />
           <div>
             <input className="form-submit" type="submit" value="Submit" />
           </div>

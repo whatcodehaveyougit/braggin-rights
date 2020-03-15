@@ -7,7 +7,7 @@ class AddPlayerForm extends Component {
       name: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit(event){
@@ -26,8 +26,8 @@ class AddPlayerForm extends Component {
     })
   }
 
-  handleNameChange(event) {
-    this.setState({ name: event.target.value })
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   render(){
@@ -36,7 +36,7 @@ class AddPlayerForm extends Component {
       <section>
         <h1 className="title-text">Add a Player and Predictions</h1>
         <h2>Player Name</h2>
-            <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
+            <input className="form-text" name="name" value={this.state.name} onChange={this.handleChange} />
           <div>
             <input className="form-submit" type="submit" value="Submit Player" />
           </div>
