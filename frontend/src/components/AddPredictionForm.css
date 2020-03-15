@@ -1,3 +1,7 @@
 .hide-input {
     display: none;
 }
+
+.click-state {
+    display: none;
+}

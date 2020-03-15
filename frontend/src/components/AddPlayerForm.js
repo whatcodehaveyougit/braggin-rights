@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './player-form.css'
 
 class AddPlayerForm extends Component {
   constructor(props) {
