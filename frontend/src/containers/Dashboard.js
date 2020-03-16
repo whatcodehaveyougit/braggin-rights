@@ -50,11 +50,6 @@ class Dashboard extends Component {
       this.setState({contestAdded: false})
   }
 
-  handleSelectedContest(selectedContest){
-    this.setState({
-      createdContest: selectedContest
-    })
-  }
 
   handleContestSubmit(submittedContest) {
     console.log(submittedContest);
@@ -77,8 +72,6 @@ class Dashboard extends Component {
           });
         })
   }
-
-
 
   handlePredictionSubmit(submittedPrediction){
     fetch('http://localhost:8080/predictions', {

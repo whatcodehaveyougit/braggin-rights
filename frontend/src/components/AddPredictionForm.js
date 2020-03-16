@@ -69,11 +69,10 @@ class AddPredictionForm extends Component {
                   return <form onSubmit={this.handleSubmit} key={guessable.title} >
                       <label> { guessable.title } </label> <br/>
                           <input className="form-text" onChange={this.handlePredictionChange} />
-
-{/* For some reason this is not working - why? */}
+                          {/* For some reason this is not working - why? */}
                           <input value={this.props.createdPlayer.name} onChange={this.handlePlayerChange} className="hide-input" />
-
-                      <input type="submit" className="form-submit prediction" value="Submit Prediction" onClick={() => this.updateGuessableState(guessable.id)} />
+                      <input type="submit" className="form-submit prediction" 
+                      value="Submit Prediction" onClick={() => this.updateGuessableState(guessable.id)} />
                   </form>
                 }
               )}

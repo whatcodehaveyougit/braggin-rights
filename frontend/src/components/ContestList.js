@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
 import './ContestList.css';
-import AddGuessableForm from './AddGuessableForm';
-import AddPlayerForm from './AddPlayerForm';
 import DeleteContest from './DeleteContest';
-import AddPredictionForm from './AddPredictionForm.js'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import GameSetup from './GameSetup.js'
 
 
 class ContestList extends Component {
@@ -107,22 +107,19 @@ class ContestList extends Component {
       })
     };
 
-    // componentDidUpdate(createdPlayer) {
-    //   if (createdPlayer !== this.createdPlayer) {
-    //   //  AddPredictionForm.forceUpdate()
-    //   }
-    // }
-
-
     newPlayer(){
       this.setState({ createdPlayer: null })
     }
 
-
   render() {
 
     return (
-      <>
+ 
+      <Router>
+        <React.Fragment>
+          <Switch>
+          {/* <Route exact path="/" component={ContestList} />
+
         <h1 className="title-text">Contests</h1>
         <ul className="contest-list">
           {this.props.contests.map(contest => {
@@ -135,11 +132,23 @@ class ContestList extends Component {
         </div>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
         
-        <PredictionList selectedGuessable={this.state.selectedGuessable} />
+        <div>
+         {this.state.selectedGuessable ? <h2> Predictions for  {this.state.selectedGuessable.title}</h2> : null }
+          <PredictionList selectedGuessable={this.state.selectedGuessable} />
+        </div> */}
 
-        <GameSetup />
-
-      </>
+        <Route path="/game-setup" component={GameSetup} 
+        render={(props) => <GameSetup 
+          selectedContest={this.state.selectedContest}
+          onGuessableSubmit={this.handleGuessableSubmit}
+          onPlayerSubmit={this.handlePlayerSubmit} newPlayer={this.newPlayer}
+          selectedContest={this.state.selectedContest}
+          createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} 
+        />}
+        />
+         </Switch>
+        </React.Fragment>
+      </Router>
     )
 
 

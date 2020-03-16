@@ -1,28 +1,36 @@
 import React, { Component } from 'react'
+import AddGuessableForm from './AddGuessableForm';
+import AddPlayerForm from './AddPlayerForm';
+import AddPredictionForm from './AddPredictionForm.js'
 
 class GameSetup extends Component {
     constructor(props) {
+        super(props); 
         this.state = {
-
         }
     }
 
+  
+  
+
 render(){
     return (
+        <>
+        {this.props.selectedContest ? <AddGuessableForm selectedContest={this.props.selectedContest}
+          onGuessableSubmit={this.props.onGuessableSubmit} /> : null}
 
-        {this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
-          onGuessableSubmit={this.handleGuessableSubmit} /> : null}
+      { this.props.selectedContest && this.props.createdPlayer === null ? <AddPlayerForm selectedContest={this.props.selectedContest}
+      onPlayerSubmit={this.props.onPlayerSubmit} /> : null}
 
-      { this.state.selectedContest && this.state.createdPlayer === null ? <AddPlayerForm selectedContest={this.state.selectedContest}
-      onPlayerSubmit={this.handlePlayerSubmit} /> : null}
-
-      { this.state.createdPlayer ? <AddPredictionForm selectedContest={this.state.selectedContest}
-      createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
+      { this.props.createdPlayer ? <AddPredictionForm selectedContest={this.props.selectedContest}
+      createdPlayer={this.props.createdPlayer} onPredictionSubmit={this.props.onPredictionSubmit} /> : null }
       
-      { this.state.selectedContest && this.state.createdPlayer ? <button onClick={this.newPlayer}>Add Another Player</button> : null }
+     
+      { this.props.selectedContest && this.props.createdPlayer ? <button onClick={this.props.newPlayer}>Add Another Player</button> : null }
+    </>
     )
 }
 
 
 
-}
+} export default GameSetup
