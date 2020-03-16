@@ -10,7 +10,7 @@ function GuessableList({ selectedContest, onGuessableClick }) {
   if (selectedContest != null) {
     return (
       <>
-        <h3 className="title-text">{selectedContest.title}</h3>
+        <h3 className="title-text">{selectedContest.title} Predictions</h3>
         <ul className="guessable-list">
           {selectedContest.guessables.map(guessable => {
             return <li value={guessable.id} key={guessable.id} onClick={handleEvent}>{guessable.title}</li>

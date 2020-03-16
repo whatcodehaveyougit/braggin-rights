@@ -84,7 +84,8 @@ class ContestList extends Component {
       })
     })
     .then(res => res.json())
-    .then(player => { this.setState({createdPlayer: player})})};
+    .then(player => { this.setState({createdPlayer: player})})
+  };
 
     handlePredictionSubmit(submittedPrediction, guessablePredicted){
       fetch('http://localhost:8080/predictions', {
@@ -105,6 +106,14 @@ class ContestList extends Component {
       })
     };
 
+    // componentDidUpdate(createdPlayer) {
+    //   if (createdPlayer !== this.createdPlayer) {
+    //   //  AddPredictionForm.forceUpdate()
+    //   }
+    // }
+
+
+
 
 
   render() {
@@ -117,9 +126,12 @@ class ContestList extends Component {
             return <li value={contest.id} key={contest.id} onClick={this.handleSelectContest}>{contest.title}</li>
           })}
         </ul>
+        <div className="section-wrapper">
         <a href="http://localhost:3000/add-contest" className="form-submit">Add New Contest</a>
         <DeleteContest selectedContest={this.state.selectedContest} onContestDelete={this.props.onContestDelete} />
+        </div>
         <GuessableList selectedContest={this.state.selectedContest} onGuessableClick={this.handleSelectGuessable} />
+        
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
 
         {this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}

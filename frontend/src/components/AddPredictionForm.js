@@ -8,12 +8,13 @@ class AddPredictionForm extends Component {
         this.state = {
           prediction: "",
           guessableToUpdateId: null,
-          test: ""
-        };
+          test: "",
+        }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlePredictionChange = this.handlePredictionChange.bind(this)
         this.updateGuessableState = this.updateGuessableState.bind(this)
         this.handlePlayerChange = this.handlePlayerChange.bind(this)
+        this.newPlayer = this.newPlayer.bind(this)
         }
 
     updateGuessableState(guessableId){
@@ -22,7 +23,6 @@ class AddPredictionForm extends Component {
     }
 
     handleSubmit(event) {
-        event.target.classList.add('click-state');
         event.preventDefault();
         const prediction = this.state.prediction;
         const guessableToUpdateId = this.state.guessableToUpdateId;
@@ -39,6 +39,7 @@ class AddPredictionForm extends Component {
           prediction: "",
           guessableToUpdateId: ""
         })
+        event.target.classList.add('click-state');
       }
 
       handlePredictionChange(event) {
@@ -47,6 +48,18 @@ class AddPredictionForm extends Component {
       
       handlePlayerChange(event) {
         this.setState({ test: event.target.value})
+      }
+
+      // componentWillReceiveProps(nextProps){
+      //   if(nextProps.someValue!==this.props.someValue){
+      //     //Perform some operation
+      //     this.setState({someState: someValue });
+      //     this.classMethod();
+      //   }
+      // }
+
+      newPlayer(){
+        this.setState({ test: Math.random() })
       }
 
     render(){
@@ -66,6 +79,7 @@ class AddPredictionForm extends Component {
                   </form>
                 }
               )}
+              <button onClick={this.newPlayer}>New Player</button>
               </section>
               </>
             )
