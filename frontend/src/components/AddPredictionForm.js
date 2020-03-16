@@ -14,7 +14,7 @@ class AddPredictionForm extends Component {
         this.handlePredictionChange = this.handlePredictionChange.bind(this)
         this.updateGuessableState = this.updateGuessableState.bind(this)
         this.handlePlayerChange = this.handlePlayerChange.bind(this)
-        this.newPlayer = this.newPlayer.bind(this)
+      
         }
 
     updateGuessableState(guessableId){
@@ -58,9 +58,7 @@ class AddPredictionForm extends Component {
       //   }
       // }
 
-      newPlayer(){
-        this.setState({ test: Math.random() })
-      }
+      
 
     render(){
         return(
@@ -79,7 +77,7 @@ class AddPredictionForm extends Component {
                   </form>
                 }
               )}
-              <button onClick={this.newPlayer}>New Player</button>
+              
               </section>
               </>
             )

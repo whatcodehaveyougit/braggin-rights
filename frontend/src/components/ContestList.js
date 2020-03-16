@@ -22,6 +22,7 @@ class ContestList extends Component {
     this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
     this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
+    this.newPlayer = this.newPlayer.bind(this)
   }
 
   handleSelectContest(event) {
@@ -113,7 +114,9 @@ class ContestList extends Component {
     // }
 
 
-
+    newPlayer(){
+      this.setState({ createdPlayer: null })
+    }
 
 
   render() {
@@ -134,14 +137,8 @@ class ContestList extends Component {
         
         <PredictionList selectedGuessable={this.state.selectedGuessable} />
 
-        {this.state.selectedContest ? <AddGuessableForm selectedContest={this.state.selectedContest}
-          onGuessableSubmit={this.handleGuessableSubmit} /> : null}
+        <GameSetup />
 
-      { this.state.selectedContest ? <AddPlayerForm selectedContest={this.state.selectedContest}
-      onPlayerSubmit={this.handlePlayerSubmit} /> : null}
-
-      { this.state.createdPlayer ? <AddPredictionForm selectedContest={this.state.selectedContest}
-      createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
       </>
     )
 
