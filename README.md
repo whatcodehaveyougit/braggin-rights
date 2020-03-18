@@ -1,5 +1,4 @@
-# braggin-rights
-This is the final group project at CodeClan which uses JAVA / React.  
+# Braggin-Rights
 
 Please note that this readme assume knowledge of git.
 
