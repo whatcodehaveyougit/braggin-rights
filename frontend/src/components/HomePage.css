@@ -6,7 +6,7 @@
 .section-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .contest-list ul {

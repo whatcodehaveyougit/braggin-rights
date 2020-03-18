@@ -8,11 +8,11 @@ function deleteContest(event) {
 }
 
 if(props.selectedContest != null){
-return (
-<form onSubmit={deleteContest}>
-<input type="submit" value="Delete contest" className="form-submit" />
-</form>
-)} return null
+    return (
+        <form onSubmit={deleteContest}>
+        <input type="submit" value="Delete contest" className="form-submit delete-button" />
+        </form>
+    )} return null
 
 }
 

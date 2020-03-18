@@ -8,7 +8,7 @@ function PredictionList({ selectedGuessable }) {
       <>
         <ul className="prediction-list">
           {selectedGuessable._embedded.predictions.map(prediction => {
-            return <ul className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.player.name} predicts {prediction.predictionTitle}</ul>
+            return <ul className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.player.name} - {prediction.predictionTitle}</ul>
           })}
         </ul>
       </>

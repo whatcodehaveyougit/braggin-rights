@@ -18,7 +18,22 @@
 	font-family: "Bungee Inline", cursive;
 	text-decoration: none;
 	color: #e74c3c;
-	margin-top: 0em;
+	margin: 0em;
+}
+
+.site-title {
+    font-size: 52px;
+    text-align: left;
+    font-family: "Bungee Shade";
+    margin: 0 0 0 20px;
+    padding: 10px;
+}
+
+.contests-title-text {
+	font-size: 4em;
+	margin-top: 12px;
+	color: #e74c3c;
+	margin-bottom: 0px;
 }
 
 .App-header {
@@ -89,6 +104,10 @@ li:hover {
 	margin-bottom: 0;
 }
 
+.delete-button {
+	background-color: #e74c3c;
+}
+
 .form-submit:hover {
 	text-decoration: underline;
 	cursor: pointer;
@@ -107,6 +126,3 @@ li:hover {
 	width: 300px;
 }
 
-.main-title {
-	font-family: "Bungee Shade";
-}

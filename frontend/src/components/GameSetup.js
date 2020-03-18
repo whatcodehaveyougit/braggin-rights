@@ -10,15 +10,13 @@ class GameSetup extends Component {
         }
     }
 
-  
-  
 
 render(){
     return (
         <>
         {this.props.selectedContest ? <AddGuessableForm selectedContest={this.props.selectedContest}
           onGuessableSubmit={this.props.onGuessableSubmit} /> : null}
-
+    <p>Test</p>
       { this.props.selectedContest && this.props.createdPlayer === null ? <AddPlayerForm selectedContest={this.props.selectedContest}
       onPlayerSubmit={this.props.onPlayerSubmit} /> : null}
 
