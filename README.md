@@ -1,6 +1,6 @@
 # Braggin-Rights
 
-Please note that this readme assume knowledge of git.
+Please note that this readme assumes knowledge of git.
 
 1. Git Clone the project and save it onto your desktop.
 
