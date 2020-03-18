@@ -26,9 +26,9 @@ class ContestForm extends Component {
     })
     this.setState({
       title: "",
-      // redirect: true
+      redirect: true
     })
-    this.history.push("/")
+    // this.history.push("/")
     // setRedirect = () => {
     //   this.setState({
     //     redirect: true
@@ -50,7 +50,7 @@ class ContestForm extends Component {
 
   render() {
 
-      // if (this.state.redirect) return <Redirect to="/" />
+      if (this.state.redirect) return <Redirect to="/" />
 
       return (
         <>
