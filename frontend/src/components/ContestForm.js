@@ -29,16 +29,6 @@ class ContestForm extends Component {
       redirect: true
     })
     // this.history.push("/")
-    // setRedirect = () => {
-    //   this.setState({
-    //     redirect: true
-    //   })
-    // }
-    // renderRedirect = () => {
-    //   if (this.state.redirect) {
-    //     return <Redirect to='/' />
-    //   }
-    // }
   }
 
   handleTitleChange(event) {
