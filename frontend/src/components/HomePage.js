@@ -3,7 +3,7 @@ import GuessableList from './GuessableList'
 import PredictionList from './PredictionList'
 import './HomePage.css';
 import DeleteContest from './DeleteContest';
-import AddPlayer from './AddPlayerForm'
+import AddPlayerForm from './AddPlayerForm'
 
 class HomePage extends Component {
 
@@ -36,13 +36,22 @@ class HomePage extends Component {
           <div>
           {this.props.selectedGuessable ? <h2> Predictions for  {this.props.selectedGuessable.title}</h2> : null }
             <PredictionList selectedGuessable={this.props.selectedGuessable} />
-          </div> 
-          <div>
+          </div>
+
+          {/* <div>
           { this.props.selectedContest ? <button className="form-submit"  onClick={this.handleClick}>
           Add Player to {this.props.selectedContest.title}
           </button> : null }
+          </div> */}
+
+          <div>
+            { this.props.selectedContest ? <a href="http://localhost:3000/game-setup"> className="form-submit"
+            Add Players to {this.props.selectedContest.title}
+            </a> : null }
           </div>
-          { this.state.isToggleOn ? <AddPlayer selectedContest={this.props.selectedContest} onPlayerSubmit={this.props.handlePlayerSubmit} /> : null }
+
+          {/* { this.state.isToggleOn ? <AddPlayerForm selectedContest={this.props.selectedContest} onPlayerSubmit={this.props.onPlayerSubmit} /> : null } */}
+
           <DeleteContest selectedContest={this.props.selectedContest} onContestDelete={this.props.onContestDelete} />
         </>   
     )
