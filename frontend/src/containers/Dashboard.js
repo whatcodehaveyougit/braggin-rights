@@ -196,7 +196,6 @@ class Dashboard extends Component {
 
 
             <Route
-            
               path="/add-contest"
               render={() => <ContestForm onContestSubmit={this.handleContestSubmit}
               createdContest={this.state.createdContest} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}

@@ -35,9 +35,6 @@ class ContestForm extends Component {
     this.setState({ title: event.target.value })
   }
 
-
-
-
   render() {
 
       if (this.state.redirect) return <Redirect to="/" />
