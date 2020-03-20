@@ -19,3 +19,7 @@
 .selected {
 	background-color: red;
 }
+
+.click-state {
+    display: none !important;
+}

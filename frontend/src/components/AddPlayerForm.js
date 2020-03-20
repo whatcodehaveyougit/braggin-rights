@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import AddPredictionForm from './AddPredictionForm.js'
+import './AddPredictionForm.css'
+
 
 class AddPlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      active: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -24,6 +28,8 @@ class AddPlayerForm extends Component {
     this.setState({
       name: ""
     })
+      const currentState = this.state.active;
+      this.setState({ active: !currentState });
   }
 
   handleChange(event) {
@@ -33,7 +39,7 @@ class AddPlayerForm extends Component {
   render(){
     return(
     <form onSubmit={this.handleSubmit} className="">
-      <section>
+      <section className={this.state.active ? 'click-state': null }>
         <h1 className="title-text">Add a Player and Predictions</h1>
         <h2>Player Name</h2>
             <input className="form-text" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -42,6 +48,9 @@ class AddPlayerForm extends Component {
           </div>
         </section>
        
+        { this.props.createdPlayer ? <AddPredictionForm selectedContest={this.props.selectedContest}
+        createdPlayer={this.props.createdPlayer} onPredictionSubmit={this.props.onPredictionSubmit} /> : null }
+      
     </form>
     )
   }

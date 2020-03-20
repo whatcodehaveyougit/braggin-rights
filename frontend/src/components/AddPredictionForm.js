@@ -50,16 +50,6 @@ class AddPredictionForm extends Component {
         this.setState({ test: event.target.value})
       }
 
-      // componentWillReceiveProps(nextProps){
-      //   if(nextProps.someValue!==this.props.someValue){
-      //     //Perform some operation
-      //     this.setState({someState: someValue });
-      //     this.classMethod();
-      //   }
-      // }
-
-      
-
     render(){
         return(
             <>

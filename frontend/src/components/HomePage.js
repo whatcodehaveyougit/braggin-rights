@@ -33,31 +33,33 @@ class HomePage extends Component {
           </ul>
 
           <GuessableList selectedContest={this.props.selectedContest} onGuessableClick={this.props.onGuessableClick} />
+          
           <div>
           {this.props.selectedGuessable ? <h2> Predictions for  {this.props.selectedGuessable.title}</h2> : null }
             <PredictionList selectedGuessable={this.props.selectedGuessable} />
           </div>
 
-          {/* <div>
-          { this.props.selectedContest ? <button className="form-submit"  onClick={this.handleClick}>
-          Add Player to {this.props.selectedContest.title}
-          </button> : null }
-          </div> */}
+           <div>
+            { this.props.selectedContest ? 
+            <button className={` ${this.state.isToggleOn ? 'click-state': null } form-submit `}   
+            onClick={this.handleClick}>
+            Add Player to {this.props.selectedContest.title}
+            </button> : null }
+          </div>  
 
-          <div>
-            { this.props.selectedContest ? <a href="http://localhost:3000/game-setup"> className="form-submit"
-            Add Players to {this.props.selectedContest.title}
-            </a> : null }
-          </div>
-
-          {/* { this.state.isToggleOn ? <AddPlayerForm selectedContest={this.props.selectedContest} onPlayerSubmit={this.props.onPlayerSubmit} /> : null } */}
+          { this.state.isToggleOn ? 
+          <AddPlayerForm 
+          selectedContest={this.props.selectedContest} 
+          onPlayerSubmit={this.props.onPlayerSubmit} 
+          createdPlayer={this.props.createdPlayer} 
+          onPredictionSubmit={this.props.onPredictionSubmit} /> : null }
 
           <DeleteContest selectedContest={this.props.selectedContest} onContestDelete={this.props.onContestDelete} />
         </>   
     )
-
-
   }
+
+  
 }
 
 

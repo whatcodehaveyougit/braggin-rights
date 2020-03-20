@@ -3,7 +3,7 @@ import HomePage from '../components/HomePage.js'
 import NavBar from '../components/NavBar'
 import {BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import ContestForm from '../components/ContestForm.js'
-import ContestSetup from '../components/ContestSetup.js/index.js'
+import ContestSetup from '../components/ContestSetup.js'
 
 class Dashboard extends Component {
   constructor(props){
@@ -190,8 +190,18 @@ class Dashboard extends Component {
            <Route
               exact
               path="/"
-              render={() => <HomePage contests={this.state.contests} onContestSelect={this.handleSelectContest} onContestDelete={this.handleDeleteContest}
-              onGuessableSubmit={this.handleGuessableSubmit}  onPlayerSubmit={this.handlePlayerSubmit} newPlayer={this.newPlayer} onGuessableClick={this.handleSelectGuessable} selectedGuessable={this.state.selectedGuessable} selectedContest={this.state.selectedContest} />}
+              render={() => <HomePage 
+                contests={this.state.contests} 
+                onContestSelect={this.handleSelectContest} 
+                onContestDelete={this.handleDeleteContest}
+                onGuessableSubmit={this.handleGuessableSubmit}  
+                onPlayerSubmit={this.handlePlayerSubmit} 
+                newPlayer={this.newPlayer} 
+                onGuessableClick={this.handleSelectGuessable} 
+                selectedGuessable={this.state.selectedGuessable} 
+                selectedContest={this.state.selectedContest} 
+                createdPlayer={this.state.createdPlayer}
+                onPredictionSubmit={this.handlePredictionSubmit} />}
             />
 
 
@@ -208,7 +218,8 @@ class Dashboard extends Component {
               onPlayerSubmit={this.handlePlayerSubmit} newPlayer={this.newPlayer}
               onGuessableSubmit={this.handleGuessableSubmit}
               selectedContest={this.state.selectedContest}
-              createdPlayer={this.state.createdPlayer} onPredictionSubmit={this.handlePredictionSubmit} 
+              createdPlayer={this.state.createdPlayer} 
+              onPredictionSubmit={this.handlePredictionSubmit} 
             />) }
             />
 
