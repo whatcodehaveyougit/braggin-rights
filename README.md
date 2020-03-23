@@ -1,4 +1,4 @@
-# Braggin-Rights
+# Braggin' Rights
 
 This is the final project I did at CodeClan, I have done a fair amount of refactoring since the project finshed as I really enjoy working with React.
 
@@ -44,3 +44,13 @@ This will run the back end and you should see Spring booting into action, it sho
 5. Once these are installed go back to terminal and type in 'npm start', again in the front end folder.  This should bring up a window in your browser on Localhost:3000.
 
 The web app should be up and running!
+
+## More to Do
+
+* When a contest / guessable is selected is should change color to show it has been selected
+
+* Bug - When you add a contest and then immediatly add a guessable to it, does not work
+
+* When you click add new player it should display a new form without fully re-rendering
+
+* Refactor CSS for a better UX
