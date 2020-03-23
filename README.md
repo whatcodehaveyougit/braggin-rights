@@ -6,7 +6,12 @@ This is the front page of the app
 
 ![](images/braggin-home.png)
 
+The player's predictions are displayed as can be seen here.
+
+![](images/braggin-predictions.png)
+
 This is the functionality which allows the user to add a player's predictions
+
 ![](images/braggin-add.png)
 
 ## Brief
