@@ -20,9 +20,9 @@ Braggin rights enables groups of friends to make predictions on the outcome of a
 
 ## Tech
 
-- Java / Spring
+* Java / Spring
 
-– Javascript / React
+* Javascript / React
 
 ## How to Setup this Project
 
