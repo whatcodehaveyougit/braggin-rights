@@ -4,6 +4,8 @@ import PredictionList from './PredictionList'
 import './HomePage.css';
 import DeleteContest from './DeleteContest';
 import AddPlayerForm from './AddPlayerForm'
+import AddNewPlayerButton from './AddNewPlayerButton'
+
 
 class HomePage extends Component {
 
@@ -15,6 +17,7 @@ class HomePage extends Component {
       this.handleClick = this.handleClick.bind(this)
   }
 
+  // Need to get this fully explained.
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
@@ -54,7 +57,10 @@ class HomePage extends Component {
           createdPlayer={this.props.createdPlayer} 
           onPredictionSubmit={this.props.onPredictionSubmit} /> : null }
 
-          <DeleteContest selectedContest={this.props.selectedContest} onContestDelete={this.props.onContestDelete} />
+          <div class="button-wrapper-button">
+            <AddNewPlayerButton createdPlayer={this.props.createdPlayer} />
+            <DeleteContest selectedContest={this.props.selectedContest} onContestDelete={this.props.onContestDelete} />
+          </div>
         </>   
     )
   }

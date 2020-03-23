@@ -8,7 +8,7 @@ class AddPlayerForm extends Component {
     super(props);
     this.state = {
       name: "",
-      active: false
+      playerAdded: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -29,7 +29,7 @@ class AddPlayerForm extends Component {
       name: ""
     })
       const currentState = this.state.active;
-      this.setState({ active: !currentState });
+      this.setState({ playerAdded: !currentState });
   }
 
   handleChange(event) {
@@ -39,7 +39,7 @@ class AddPlayerForm extends Component {
   render(){
     return(
     <form onSubmit={this.handleSubmit} className="">
-      <section className={this.state.active ? 'click-state': null }>
+      <section className={this.state.playerAdded ? 'click-state': null }>
         <h1 className="title-text">Add a Player and Predictions</h1>
         <h2>Player Name</h2>
             <input className="form-text" name="name" value={this.state.name} onChange={this.handleChange} />

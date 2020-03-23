@@ -5,3 +5,6 @@
 .click-state {
     display: none;
 }
+.add-new-player {
+    background-color: #3498db !important;
+}

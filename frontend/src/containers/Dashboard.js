@@ -225,7 +225,6 @@ class Dashboard extends Component {
 
         </React.Fragment>
       </Router>
-
     )
   };
 }

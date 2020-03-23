@@ -66,8 +66,10 @@ class AddPredictionForm extends Component {
                   </form>
                 }
               )}
-              
               </section>
+              {/* <section class="button wrapper">
+                { this.props.createdPlayer ? <button className="form-submit prediction add-new-player">Add Another Player</button> : null }
+              </section> */}
               </>
             )
 }
