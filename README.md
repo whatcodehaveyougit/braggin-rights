@@ -49,7 +49,7 @@ The web app should be up and running!
 
 * When a contest / guessable is selected is should change color to show it has been selected
 
-* Bug - When you add a contest and then immediatly add a guessable to it, does not work
+* Display the added guessables as a list after they are added by user on that same page.  Having trouble with asynchronous functions.
 
 * When you click add new player it should display a new form without fully re-rendering
 
