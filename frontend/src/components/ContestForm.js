@@ -36,8 +36,12 @@ class ContestForm extends Component {
   }
 
   render() {
+     
+    const { redirect } = this.state;
 
-      if (this.state.redirect) return <Redirect to="/" />
+     if (redirect) {
+       return <Redirect to="/add-guessables" />
+     }
 
       return (
         <>

@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar'
 import {BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import ContestForm from '../components/ContestForm.js'
 import ContestSetup from '../components/ContestSetup.js'
+import AddGuessableForm from '../components/AddGuessableForm.js'
 
 class Dashboard extends Component {
   constructor(props){
@@ -13,6 +14,7 @@ class Dashboard extends Component {
       selectedContest: null,
       selectedGuessable: null,
       createdPlayer: null,
+      createdContest: null,
       redirectToReferrer: false
     }
     this.handleContestSubmit = this.handleContestSubmit.bind(this);
@@ -65,14 +67,16 @@ class Dashboard extends Component {
       })
     })
     .then(res => res.json())
-    .then(contest =>{
+    .then(contest => {
           const updatedContests = [...this.state.contests, contest];
           this.setState({
-            contests: updatedContests
+            contests: updatedContests,
+            createdContest: contest
           });
         })
      .then(this.setState({
-          redirectToReferrer: true
+          redirectToReferrer: true,
+          createdContest: submittedContest
         }))
   }
 
@@ -119,6 +123,7 @@ class Dashboard extends Component {
   }
 
   handleGuessableSubmit(submittedGuessable) {
+    console.log(submittedGuessable)
     fetch('http://localhost:8080/guessables', {
       method: 'POST',
       headers: {
@@ -127,7 +132,7 @@ class Dashboard extends Component {
       },
       body: JSON.stringify({
         title: submittedGuessable.title,
-        contest: `http://localhost:8080/contests/${this.state.selectedContest.id}`,
+        contest: `http://localhost:8080/contests/${this.state.createdContest.id}`,
         result: ""
       })
     })
@@ -182,6 +187,9 @@ class Dashboard extends Component {
       <Router>
         <React.Fragment>
         <NavBar/>
+          
+           
+        
             <Route exact path="/">
               {this.state.redirectToReferrer ? <Redirect to="/" /> : null }
             </Route>
@@ -209,6 +217,12 @@ class Dashboard extends Component {
               path="/add-contest"
               render={() => <ContestForm onContestSubmit={this.handleContestSubmit}
               createdContest={this.state.createdContest} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
+            />
+
+            <Route
+              path="/add-guessables"
+              render={() => <AddGuessableForm
+              createdContest={this.state.createdContest} onGuessableSubmit={this.handleGuessableSubmit} />}
             />
 
 

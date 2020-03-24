@@ -17,12 +17,13 @@ class HomePage extends Component {
       this.handleClick = this.handleClick.bind(this)
   }
 
-  // Need to get this fully explained.
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
   }
+
+ 
 
   render() {
 
